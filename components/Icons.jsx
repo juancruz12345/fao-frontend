@@ -218,3 +218,55 @@ export function IconChessKnight(props) {
         ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M11 15h1" /><path d="M12 15v3" /></svg>
     )
   }
+
+  export function IconHistory(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+        width={props.width || "24"}
+        height={props.height || "24"}
+        viewBox="0 0 24 24"
+        fill={props.fill || "none"}
+        stroke={props.stroke || "currentColor"}
+        strokeWidth={props.strokeWidth || "2"}
+        strokeLinecap={props.strokeLinecap || "round"}
+        strokeLinejoin={props.strokeLinejoin || "round"}
+        className="icon"
+        
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 8l0 4l2 2" /><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" /></svg>
+    )
+  }
+
+  export function IconChevronLeft(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+        width={props.width || "24"}
+        height={props.height || "24"}
+        viewBox="0 0 24 24"
+        fill={props.fill || "none"}
+        stroke={props.stroke || "currentColor"}
+        strokeWidth={props.strokeWidth || "2"}
+        strokeLinecap={props.strokeLinecap || "round"}
+        strokeLinejoin={props.strokeLinejoin || "round"}
+        className="icon"
+        
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+    )
+  }
+
+  export function IconChevronRight(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+        width={props.width || "24"}
+        height={props.height || "24"}
+        viewBox="0 0 24 24"
+        fill={props.fill || "none"}
+        stroke={props.stroke || "currentColor"}
+        strokeWidth={props.strokeWidth || "2"}
+        strokeLinecap={props.strokeLinecap || "round"}
+        strokeLinejoin={props.strokeLinejoin || "round"}
+        className="icon"
+        
+        >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+    )
+  }

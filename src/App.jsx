@@ -12,22 +12,9 @@ import {Galery} from '../components/Galery';
 import {Formation} from '../components/Formation';
 import {Players} from '../components/Players';
 import {NewsDetails} from '../components/NewsDetails';
-import { persistQueryClient } from "@tanstack/react-query-persist-client";
-import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 
-//const queryClient = new QueryClient();
-/*
-// Configura el persistor para Local Storage
-const localStoragePersister = createSyncStoragePersister({
-  storage: window.localStorage, // Cambiar a `sessionStorage` si prefieres usar sesión
-});
 
-persistQueryClient({
-  queryClient,
-  persister: localStoragePersister,
-  maxAge: 1000 * 60 * 60, // Mantén el caché durante 1 hora
-});
-*/
+
 
 function App() {
  

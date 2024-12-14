@@ -1,6 +1,6 @@
 
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { IconChessKnight, IconTrophy, IconUsers, IconHistory } from '@tabler/icons-react';
+import { IconChessKnight, IconTrophy, IconUsers, IconHistory } from './Icons.jsx';
 import './AboutUs.css';
 
 export function AboutUs() {
@@ -13,7 +13,7 @@ export function AboutUs() {
           <Card className="h-100">
             <Card.Body>
               <div className="d-flex align-items-center mb-3">
-                <IconHistory size={32} className="me-2 text-primary" />
+                <IconHistory width={32} height={32} stroke='grey' />
                 <h2 className="mb-0">Nuestra Historia</h2>
               </div>
               <Card.Text>
@@ -26,7 +26,7 @@ export function AboutUs() {
           <Card className="h-100">
             <Card.Body>
               <div className="d-flex align-items-center mb-3">
-                <IconChessKnight size={32} className="me-2 text-primary" />
+                <IconChessKnight width={32} height={32} stroke='grey'/>
                 <h2 className="mb-0">Nuestra Misión</h2>
               </div>
               <Card.Text>
@@ -42,7 +42,7 @@ export function AboutUs() {
           <Card className="h-100">
             <Card.Body>
               <div className="d-flex align-items-center mb-3">
-                <IconTrophy size={32} className="me-2 text-primary" />
+                <IconTrophy width={32} height={32} stroke='grey' />
                 <h2 className="mb-0">Nuestros Logros</h2>
               </div>
               <ul className="achievement-list">
@@ -58,7 +58,7 @@ export function AboutUs() {
           <Card className="h-100">
             <Card.Body>
               <div className="d-flex align-items-center mb-3">
-                <IconUsers size={32} className="me-2 text-primary" />
+                <IconUsers width={32} height={32} stroke='grey' />
                 <h2 className="mb-0">Nuestra Comunidad</h2>
               </div>
               <Card.Text>

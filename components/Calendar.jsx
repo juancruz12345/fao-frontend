@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col, Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
+import { IconChevronLeft, IconChevronRight } from './Icons.jsx';
 import { useEvents } from '../hooks/useEvents';
 import './Calendar.css';
 
