@@ -1,0 +1,57 @@
+.hover-bg-light:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+  }
+  
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  #news-h2{
+    margin-top: 20px;
+    text-align: center;
+  }
+  .link-news{
+    text-decoration: none;
+    color: black;
+  }
+
+  .icon{
+    margin-right: 5px;
+    flex-shrink: 0;
+  }
+  .icon-trophy{
+    color: gold;
+    margin-right: 5px;
+    flex-shrink: 0;
+  }
+
+  [data-bs-theme=dark]{
+    background: #1a1d20 !important; 
+    body{
+      background: #1a1d20 !important; 
+    }
+
+    #container-home{
+      background: #1a1d20 !important; 
+    }
+   
+    #nav-item{
+      color:#dee2e6 !important;
+      
+    }
+
+    .hover-bg-light:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s;
+  }
+
+    .card-title{
+      color:#f8f9fa !important;
+    }
+    .card-subtitle{
+      color: #dee2e6 !important;
+    }
+}
+  
+  

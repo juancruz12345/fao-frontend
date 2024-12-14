@@ -1,0 +1,134 @@
+.navbar {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+}
+.brand-link{
+    display: flex;
+    
+}
+.brand span {
+    display: flex;
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    align-self: center;
+    color: #333;
+}
+.brand span:hover{
+    color: #333;
+}
+.links-header {
+    margin-left: 30px;
+    display: flex;
+    
+}
+
+.theme-div{
+    
+    padding: 5px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+#form-range{
+    width: 2vw;
+    margin-left: 2px;
+    margin-right: 2px;
+  
+}
+
+.icon-social:hover{
+    filter: drop-shadow(0 0 1px rgb(219, 219, 219));
+}
+
+
+
+
+/*--------------------SECOND NAVBAR-------------------------*/
+.second-navbar {
+    background: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.second-navbar-collapse {
+    justify-content: center;
+}
+
+.navbar .nav-link,
+.second-navbar .nav-link {
+    color: #333;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.second-navbar .nav-link:hover {
+    color: #007bff;
+}
+
+.second-navbar .nav-link {
+    font-weight: 500;
+}
+
+@media (max-width: 991px) {
+    .brand span {
+        font-size: 1rem;
+    }
+
+    .second-navbar-collapse {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .second-navbar .nav-link {
+        padding: 0.5rem;
+    }
+
+    #form-range{
+        width: 6vw;
+    }
+}
+@media (max-width: 991px) {
+    #form-range{
+        width: 10vw;
+    }
+}
+
+
+[data-bs-theme=dark] {
+    .navbar {
+        background: #1a1d20;  /* Un tono más oscuro para la primera navbar */
+        border-bottom: 1px solid #2c2c2c;
+    }
+    .second-navbar {
+        background: #212529;  /* Mantenemos el tono original para la segunda navbar */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .navbar-brand span, .nav-link {
+        color: #f8f9fa;
+    }
+    .navbar .nav-link,
+    .second-navbar .nav-link {
+        color: #e9ecef;
+    }
+    .navbar .nav-link:hover,
+    .second-navbar .nav-link:hover {
+        color: #0d6efd;
+    }
+    .theme-div {
+        background: #2b3035;  /* Un tono intermedio para el div del tema */
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    }
+    .icon-social:hover {
+        filter: brightness(1.2);
+    }
+}
+

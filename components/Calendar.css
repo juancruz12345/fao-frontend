@@ -1,0 +1,96 @@
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .calendar-nav-icon {
+    cursor: pointer;
+    color: #007bff;
+  }
+  
+  .calendar-nav-icon:hover {
+    color: #0056b3;
+  }
+  
+  .calendar-weekdays {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    padding: 5px;
+    overflow: hidden;
+  }
+  
+  .calendar-day.empty {
+    background-color: #f8f9fa;
+  }
+  
+  .calendar-day.has-event {
+    background-color: #e6f2ff;
+  }
+  
+  .day-number {
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  
+  .event-title {
+    font-size: 0.7rem;
+    background-color: #007bff;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-bottom: 2px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  
+  .event-title:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .calendar-day {
+      font-size: 0.8rem;
+    }
+    
+    .event-title {
+      font-size: 0.6rem;
+    }
+  }
+  
+  /* Estilos para el tooltip */
+  .tooltip-inner {
+    max-width: 200px;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    background-color: #000;
+    border-radius: 4px;
+  }
+  
+  
+  
+  
