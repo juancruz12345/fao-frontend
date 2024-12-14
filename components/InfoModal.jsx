@@ -42,8 +42,8 @@ export function InfoModal({ show, setShow, element }) {
           <ul className="list-unstyled">
             {element?.dirigentes.map((e, i) => (
               <li key={i} className="entity-card">
-                <h3><strong>{e.cargo}</strong></h3>
-                <h4>{e.nombre}</h4>
+                <h4>{e.cargo}</h4>
+                <p>{e.nombre}</p>
                 <p>DNI: {e.dni}</p>
               </li>
             ))}
