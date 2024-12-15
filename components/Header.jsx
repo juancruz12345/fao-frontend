@@ -78,6 +78,7 @@ export function Header() {
                             <Nav.Link as={Link} to="/calendario">Calendario</Nav.Link>
                             <Nav.Link as={Link} to="/eventos">Eventos / Torneos pasados</Nav.Link>
                             <Nav.Link as={Link} to="/galeria">Galería de fotos</Nav.Link>
+                            <Nav.Link as={Link} to="/historia">Historia</Nav.Link>
                             <Nav.Link as={Link} to="/formacion">Formación</Nav.Link>
                             <Nav.Link as={Link} to="/jugadores">Jugadores</Nav.Link>
                             <Nav.Link as={Link} to="/base-de-datos">Base de datos</Nav.Link>

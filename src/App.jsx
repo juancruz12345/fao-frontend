@@ -12,7 +12,7 @@ import {Galery} from '../components/Galery';
 import {Formation} from '../components/Formation';
 import {Players} from '../components/Players';
 import {NewsDetails} from '../components/NewsDetails';
-
+import { History } from '../components/History';
 
 
 
@@ -33,7 +33,7 @@ function App() {
     <Route path='/galeria' element={<Galery/>}></Route>
     <Route path='/formacion' element={<Formation/>}></Route>
     <Route path='/jugadores' element={<Players/>}></Route>
-
+    <Route path='/historia' element={<History/>}></Route>
 
 
   </Routes>

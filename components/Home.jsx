@@ -29,7 +29,7 @@ export function Home() {
             <Card>
               <Card.Body className="p-0">
                 <div className="border-bottom p-3">
-                  <NavItem icon={<IconChessKnight />} text="Historia" handleElement={()=>{setElement(elements[0]),setShow(true)}} />
+                  
                   <NavItem icon={<IconUsers/>} text="Dirigencia" handleElement={()=>{setElement(elements[1]),setShow(true)}} />
                   <NavItem icon={<IconFileText />} text="Estatuto FAO" handleElement={()=>{setElement(elements[2]),setShow(true)}}/>
                   <NavItem icon={<IconFileText />} text="Reglamento FAO" handleElement={()=>{setElement(elements[3]),setShow(true)}}/>
