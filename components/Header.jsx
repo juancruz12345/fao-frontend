@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav, Form } from "react-bootstrap"
+import { Navbar, Container, Nav } from "react-bootstrap"
 import { IconFacebook, IconInstagram, IconMoon, IconSun } from "./Icons"
 import './Header.css'
 import { useTheme } from "../context/ThemeContext"
@@ -7,23 +7,10 @@ import { Link } from "react-router-dom"
 export function Header() {
 
 
-    const {theme, setTheme} = useTheme()
+    const {theme, toggleTheme} = useTheme()
     const html = document.querySelector('html')
     html.setAttribute("data-bs-theme", theme)
-    const initialValue = window.localStorage.getItem('theme-value') || 0
-
-    const handleChange = (e) => {
-        
-        if(e.currentTarget.value==0){
-            window.localStorage.setItem('theme-value', 0)
-           setTheme('dark')
-        }
-        else if(e.currentTarget.value==1){
-            window.localStorage.setItem('theme-value', 1)
-            setTheme('light')
-        }
-       
-    }
+    
 
     return (
         <header>
@@ -48,11 +35,18 @@ export function Header() {
                        
                   <div className="theme-div">
                     
-                  <IconMoon className="icon-theme"></IconMoon>
-                   
-                   <Form.Range value={initialValue} onChange={handleChange}  max={1} min={0} id="form-range"/>
-               
-                   <IconSun className="icon-theme"></IconSun>
+                {
+                    theme==='dark'
+                    ? 
+                    <div onClick={toggleTheme}>
+                        <IconSun className='icon-theme'></IconSun>
+                    </div>
+
+                    : 
+                    <div onClick={toggleTheme}>
+                        <IconMoon className='icon-theme'></IconMoon>
+                    </div>
+                }
                   </div>
                       
 
@@ -74,11 +68,10 @@ export function Header() {
                     <Navbar.Toggle aria-controls="second-navbar-nav" />
                     <Navbar.Collapse id="second-navbar-nav" className="second-navbar-collapse">
                         <Nav className="mx-auto">
-                            <Nav.Link as={Link} to="/about">Sobre nosotros</Nav.Link>
+                            <Nav.Link as={Link} to="/historia">Historia</Nav.Link>
                             <Nav.Link as={Link} to="/calendario">Calendario</Nav.Link>
                             <Nav.Link as={Link} to="/eventos">Eventos / Torneos pasados</Nav.Link>
                             <Nav.Link as={Link} to="/galeria">Galería de fotos</Nav.Link>
-                            <Nav.Link as={Link} to="/historia">Historia</Nav.Link>
                             <Nav.Link as={Link} to="/formacion">Formación</Nav.Link>
                             <Nav.Link as={Link} to="/jugadores">Jugadores</Nav.Link>
                             <Nav.Link as={Link} to="/base-de-datos">Base de datos</Nav.Link>

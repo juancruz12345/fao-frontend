@@ -21,7 +21,7 @@ export function Galery() {
   const selectUrl = (e) =>{
     const url = e.currentTarget.src
     const title = e.currentTarget.alt
-   
+    
     if(url !== '' || url !== null || url !== undefined){
       setImg({url:url, title:title, created_at:e.currentTarget.id})
       setShow(true)

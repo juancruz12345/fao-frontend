@@ -2,6 +2,8 @@ import { createContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Container, Alert, Spinner } from 'react-bootstrap';
 
+import React from 'react';
+
 export const EventContext = createContext()
 
 

@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 
+import React from 'react';
+
 
 export const ThemeContext = createContext()
 
@@ -18,7 +20,7 @@ const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   };
     
     return(
-        <ThemeContext.Provider value={{theme, toggleTheme, setTheme}}> 
+        <ThemeContext.Provider value={{theme, toggleTheme}}> 
             {children}
         </ThemeContext.Provider>
 

@@ -62,6 +62,10 @@
     text-align: center;
   }
 
+  .card-clubes{
+    padding: 10px;
+  }
+
 
 
   [data-bs-theme=dark]{

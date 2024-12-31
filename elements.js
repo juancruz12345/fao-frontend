@@ -1,5 +1,8 @@
+import { usePlayers } from "./context/PlayerContext"
+
 export function ElementsArray(){
    
+    const {players} = usePlayers()
     const elements = [{title:'historia',content:'sadsadasdasdasdas'},
         {title:'Dirigencia',dirigentes:[
             {nombre:'Hugo Omar Fischer', cargo:'Presidente',dni:'16.019.619'},
@@ -21,14 +24,25 @@ export function ElementsArray(){
         {title:'Estatuto FAO'},
         {title:'Reglamento FAO'},
         {title:'Entidades afiliadas',entidades:[
-            {nombre:'Club Atlético Estudiantes', direccion:'Av. del Valle y Lavalle, B7400 Olavarría, Provincia de Buenos Aires', redes:['https://www.caeolavarria.com','https://web.facebook.com/caeolavarria','https://www.instagram.com/estudiantesolavarria']},
-            {nombre:'Racing Atletic Club', direccion:'Av. Colón 2301, B7400 Olavarría, Provincia de Buenos Aires', redes:['https://web.facebook.com/RacingAtleticClub','https://www.instagram.com/racingatleticclub']},
-            {nombre:'Fútbol Club Ferro Carril Sud', direccion:'Av. Pringles 1851, B7400 Olavarría, Provincia de Buenos Aires', redes:['https://web.facebook.com/ClubFerroDeOlavarria','https://www.instagram.com/clubferrodeolavarria']},
-            {nombre:'Club San Martin de Sierras Bayas', direccion:'Av. Gral. José de San Martín, B7403 Sierras Bayas, Provincia de Buenos Aires', redes:['https://web.facebook.com/club.sanmartin.12']},
-            {nombre:'Sociedad de Fomento Pueblo Nuevo', direccion:'Maipú 2848, B7400 Olavarría, Provincia de Buenos Aires',redes:[]},
-            {nombre:'Biblioteca Popular "Héctor Nicolás Amoroso"', direccion:'Deán Funes 3345, B7400 Olavarría, Provincia de Buenos Aires',redes:[]}
+            {nombre:'Club Atlético Estudiantes', direccion:'Av. del Valle y Lavalle, B7400 Olavarría, Provincia de Buenos Aires', redes:['https://www.caeolavarria.com','https://web.facebook.com/caeolavarria','https://www.instagram.com/estudiantesolavarria'], img:'./logos/Estudiantes_olavarria_logo.png'},
+            {nombre:'Racing Atletic Club', direccion:'Av. Colón 2301, B7400 Olavarría, Provincia de Buenos Aires', redes:['https://web.facebook.com/RacingAtleticClub','https://www.instagram.com/racingatleticclub'],img:'./logos/Escudo_del_Club_Racing_de_Olavarria_-_BSAS.svg'},
+            {nombre:'Fútbol Club Ferro Carril Sud', direccion:'Av. Pringles 1851, B7400 Olavarría, Provincia de Buenos Aires', redes:['https://web.facebook.com/ClubFerroDeOlavarria','https://www.instagram.com/clubferrodeolavarria'],img:'./logos/ferro.webp'},
+            {nombre:'Club San Martin de Sierras Bayas', direccion:'Av. Gral. José de San Martín, B7403 Sierras Bayas, Provincia de Buenos Aires', redes:['https://web.facebook.com/club.sanmartin.12'],img:'./logos/sanmartin.jpg'},
+            {nombre:'Sociedad de Fomento Pueblo Nuevo', direccion:'Maipú 2848, B7400 Olavarría, Provincia de Buenos Aires',redes:[], img:'./logos/fomento.jpg'},
+            {nombre:'Biblioteca Popular "Héctor Nicolás Amoroso"', direccion:'Deán Funes 3345, B7400 Olavarría, Provincia de Buenos Aires',redes:[], img:'./logos/biblioteca-amoroso.jpg'}
         ]},
-        {title:'Sede FAO'}
+        {title:'Sede FAO'},
+        {title:'Listado de clubes', players:players, 
+            clubes:[{nombre:'Racing', img:'./logos/Escudo_del_Club_Racing_de_Olavarria_-_BSAS.svg'},
+                {nombre:'Ferro', img:'./logos/ferro.webp'},
+                {nombre:'El Fortin', img:'./logos/elfortin.jpg'},
+                {nombre:'Estudiantes', img:'./logos/Estudiantes_olavarria_logo.png'},
+                {nombre:'San Martin', img:'./logos/sanmartin.jpg'},
+
+
+            ]
+        },
+        {title:'Rating', players:players}
       ]
 
       return{elements}

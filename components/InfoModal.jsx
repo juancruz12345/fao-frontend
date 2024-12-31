@@ -1,7 +1,7 @@
 
-import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Table, Card, Image } from 'react-bootstrap';
 import './InfoModal.css';
+import './Players.css';
 
 export function InfoModal({ show, setShow, element }) {
 
@@ -77,6 +77,7 @@ export function InfoModal({ show, setShow, element }) {
           <ul className="list-unstyled">
             {element?.entidades.map((e, i) => (
               <li key={i} className="entity-card">
+                <img src={e.img} loading='lazy' width={80} height={80}></img>
                 <h3>{e.nombre}</h3>
                 <p>Dirección: {e.direccion}</p>
                 {e?.redes.length > 0 && (
@@ -104,6 +105,66 @@ export function InfoModal({ show, setShow, element }) {
                  <h3>Club Social Olavarría. 1° Piso</h3>
                 <br></br>
                 <h4>Direccion: General Paz 2734</h4>
+               </div>
+            )
+        }
+{
+  element?.title === 'Listado de clubes' && (
+    <div>
+      {
+        element?.clubes?.map((club, i) => (
+          <Card key={i} className='card-clubes'>
+            <Card.Title><img loading='lazy' width={80} height={80} src={club.img}></img><h2>{club.nombre}</h2></Card.Title>
+            <Card.Body>
+              <h4>Jugadores</h4>
+             <ul className="list-unstyled">
+             { element?.players
+                  ?.filter(player => player.club === club.nombre).length>0
+                  ?
+                // Filtra los jugadores cuyo club sea igual al club actual y luego los mapea
+                element?.players
+                  ?.filter(player => player.club === club.nombre)
+                  .map((player, index) => (
+                    <li key={index} className="entity-card">
+                      <p>{player.nombre}</p> {/* Muestra el nombre u otra información del jugador */}
+                    </li>
+                  ))
+                  :<>No hay jugadores</>
+              }
+             </ul>
+            </Card.Body>
+          </Card>
+        ))
+      }
+    </div>
+  )
+}
+
+        {
+            element?.title === 'Rating' && (
+               <div>
+                 <Table striped bordered hover responsive className="players-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+          
+            <th>Rating</th>
+            <th>Elo</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          {element?.players && element?.players?.map((player) => (
+            <tr key={player.id}>
+              <td>{player.nombre}</td>
+           
+              <td>{player.rating}</td>
+              <td>{player.elo}</td>
+              
+            </tr>
+          ))}
+        </tbody>
+      </Table>
                </div>
             )
         }

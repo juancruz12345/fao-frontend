@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Container, Row, Col, Card, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 import { IconChevronLeft, IconChevronRight } from './Icons.jsx';
 import { useEvents } from '../hooks/useEvents';
 import './Calendar.css';
@@ -10,6 +10,7 @@ const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
   const { events } = useEvents()
+  console.log(events)
 
   const getDaysInMonth = (date) => {
     
@@ -77,9 +78,9 @@ export function Calendar() {
       <Card>
         <Card.Body>
           <div className="calendar-header">
-            <IconChevronLeft className="calendar-nav-icon" onClick={() => changeMonth(-1)} />
+            <Button onClick={() => changeMonth(-1)} ><IconChevronLeft className="calendar-nav-icon"></IconChevronLeft></Button>
             <h2>{MONTHS[currentDate.getMonth()]} {currentDate.getFullYear()}</h2>
-            <IconChevronRight className="calendar-nav-icon" onClick={() => changeMonth(1)} />
+            <Button onClick={() => changeMonth(1)} ><IconChevronRight className="calendar-nav-icon"></IconChevronRight></Button>
           </div>
           <Row className="calendar-weekdays">
             {DAYS.map(day => (

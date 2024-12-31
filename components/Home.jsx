@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import './Home.css'
 import { useEvents } from "../hooks/useEvents"
 import { useNews } from "../hooks/useNews"
-import { IconChessKnight, IconUsers, IconFileText, IconBuilding, IconList, IconChartBar, IconTrophy, IconClock } from "./Icons"
+import { IconUsers, IconFileText, IconBuilding, IconList, IconChartBar, IconTrophy, IconClock } from "./Icons"
 import { useState } from "react"
 import { InfoModal } from "./InfoModal"
 import { ElementsArray } from "../elements"
@@ -37,8 +37,8 @@ export function Home() {
                   <NavItem icon={<IconBuilding />} text="Sede FAO"  handleElement={()=>{setElement(elements[5]),setShow(true)}}/>
                 </div>
                 <div className="p-3">
-                  <NavItem icon={<IconList />} text="Listado clubes" />
-                  <NavItem icon={<IconChartBar />} text="Rating" />
+                  <NavItem icon={<IconList />} text="Listado clubes" handleElement={()=>{setElement(elements[6]),setShow(true)}}/>
+                  <NavItem icon={<IconChartBar />} text="Rating" handleElement={()=>{setElement(elements[7]),setShow(true)}} />
                 </div>
               </Card.Body>
             </Card>
@@ -47,18 +47,7 @@ export function Home() {
 
           {/* Columna central */}
           <Col lg={6}>
-            <Card>
-              <Card.Body>
-                <h2 className="mb-4">Bienvenidos a la Federación de Ajedrez</h2>
-                <p className="text-muted">
-                  Explora la fascinante historia del ajedrez, conoce a nuestros dirigentes, 
-                  y mantente actualizado con las últimas noticias y eventos.
-                </p>
-                <div className="text-center mt-4">
-                  <IconChessKnight width={120} height={120} className="text-secondary" />
-                </div>
-              </Card.Body>
-            </Card>
+           
             <h2 className="mb-4" id="news-h2">Últimas Noticias</h2>
             {currentNews.map((item) => (
               <Card key={item.id} className="mb-4">
