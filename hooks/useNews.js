@@ -1,24 +1,22 @@
-import { useState } from "react";
-import { NewsContext } from "../context/NewsContext";
+
 import { useContext } from "react";
-export function useNews(){
+import { NewsContext } from "../context/NewsContext";
 
-  const {news} = useContext(NewsContext)  
+export function useNews() {
+ 
+
+  const {currentNews, setOffset,offset, limit, isFetching} = useContext(NewsContext)
+  const loadMore = () => setOffset((prevOffset) => prevOffset + limit);
+  const loadLess = () => setOffset((prevOffset) => prevOffset - limit);
+
   
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const newsPerPage = 3
-
-
-    
-    const indexOfLastNews = currentPage * newsPerPage
-    const indexOfFirstNews = indexOfLastNews - newsPerPage
-    const currentNews = news.slice(indexOfFirstNews, indexOfLastNews)
-  
-    
-    const paginate = (pageNumber) => setCurrentPage(pageNumber)
-
-
-    return{currentPage, currentNews, news, newsPerPage, paginate}
-
+  return {
+    currentNews,
+    isFetching,
+    loadMore,
+    loadLess,
+    offset
+  };
 }
+

@@ -1,11 +1,22 @@
 
 import { usePlayers } from "../context/PlayerContext";
-import { Table, Container } from 'react-bootstrap';
+import { Table, Container, Button } from 'react-bootstrap';
 import './Players.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext"
+import { IconChevronRight } from "./Icons";
 
 export function Players() {
   const { players } = usePlayers();
+  
+  const orderByRating = players.sort((a, b) => b.rating - a.rating)
+
+  const navigate = useNavigate()
+  const goToPlayerHistory = (id) => {
+    navigate(`/jugador/${id}`, { state: { players } })
+  }
+
+  const {theme} = useTheme()
 
   return (
     <Container className="mt-4">
@@ -15,19 +26,23 @@ export function Players() {
           <tr>
             <th>Nombre</th>
             <th>Categoría</th>
+            <th>Club</th>
             <th>Rating</th>
             <th>Elo</th>
             <th>ID Fide</th>
+            <th>Historial</th>
           </tr>
         </thead>
         <tbody>
-          {players && players.map((player) => (
+          {orderByRating && orderByRating.map((player) => (
             <tr key={player.id}>
-              <td>{player.nombre}</td>
-              <td>{player.categoria}</td>
+              <td>{player.name}</td>
+              <td>{player.category}</td>
+              <td>{player.club}</td>
               <td>{player.rating}</td>
               <td>{player.elo}</td>
               <td><Link className="link" to={`https://ratings.fide.com/profile/${player.idFide}`}>{player.idFide}</Link></td>
+              <td><Button variant={theme} onClick={()=>{goToPlayerHistory(player.id)}}>Ir al historial<IconChevronRight></IconChevronRight></Button></td>
             </tr>
           ))}
         </tbody>

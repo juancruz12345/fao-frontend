@@ -5,9 +5,7 @@ import { EventContext } from "../context/EventContext";
 export function useEvents(){
 
   const { events } = useContext(EventContext)
-  events.forEach(element => {
-    console.log(typeof element.date)
-  });
+  
   const getUpcomingEvents = () => {
     const now = new Date();
     return events

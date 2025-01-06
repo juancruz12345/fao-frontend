@@ -1,0 +1,82 @@
+.tournament-detail-container {
+  padding: 20px;
+}
+
+.tournament-detail-card,
+.standings-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.tournament-detail-card .card-header,
+.standings-card .card-header {
+  padding: 15px;
+}
+
+.rounds-accordion {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e7f1ff;
+  color: #0c63e4;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.player-name {
+  font-weight: 500;
+  flex: 1;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.result-badge {
+  font-size: 0.9rem;
+  padding: 0.4em 0.8em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.players-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.standings-table {
+  margin-bottom: 0;
+}
+
+.standings-table th,
+.standings-table td {
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .tournament-detail-container {
+    padding: 10px;
+  }
+}
+
+[data-bs-theme=dark] {
+  .tournament-detail-card .card-header,
+  .standings-card .card-header {
+    background: #212529 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    color: #f8f9fa !important;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+  }
+
+
+  
+}
+

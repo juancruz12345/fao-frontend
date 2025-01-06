@@ -1,3 +1,12 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+}
+
+
 .hover-bg-light:hover {
     background-color: rgba(0, 0, 0, 0.05);
     transition: background-color 0.2s;
@@ -25,12 +34,44 @@
     margin-right: 5px;
     flex-shrink: 0;
   }
+  .icon-star{
+    color: gold;
+    margin-right: 5px;
+    flex-shrink: 0;
+  }
+  
+  .icon-table{
+    
+    margin-right: 5px;
+    flex-shrink: 0;
+  }
+
+
+  /*-.---------------CARDS-NEWS----------------------------------*/
+  .card-news-img{
+    cursor: pointer;
+  }
+  .card-news-title{
+    cursor: pointer;
+  }
+  .btn-news-div{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  footer{
+    
+    p{
+      padding-top: 200px;
+      padding-bottom: 20px;
+      text-align: center;
+      
+    }
+  }
 
   [data-bs-theme=dark]{
     background: #1a1d20 !important; 
-    body{
-      background: #1a1d20 !important; 
-    }
+   
 
     #container-home{
       background: #1a1d20 !important; 
@@ -51,6 +92,10 @@
     }
     .card-subtitle{
       color: #dee2e6 !important;
+    }
+
+    footer{
+      background: #1a1d20 !important;
     }
 }
   

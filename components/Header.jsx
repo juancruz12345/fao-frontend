@@ -53,10 +53,10 @@ export function Header() {
 
 
                         <div className="links-header">
-                            <Nav.Link href="https://www.facebook.com/p/FAO-Federaci%C3%B3n-de-Ajedrez-de-Olavarria--100068047218244/?_rdr" className="icon-social">
+                            <Nav.Link href="https://web.facebook.com/share/g/18Ea7a8fMF/" className="icon-social">
                                 <IconFacebook width={24} height={24}/>
                             </Nav.Link>
-                            <Nav.Link href="https://www.instagram.com/faoajedrez/" className="icon-social">
+                            <Nav.Link href="https://www.instagram.com/faoajedrez/" className="icon-social-instagram">
                                 <IconInstagram width={24} height={24} />
                             </Nav.Link>
                         </div>
@@ -70,11 +70,11 @@ export function Header() {
                         <Nav className="mx-auto">
                             <Nav.Link as={Link} to="/historia">Historia</Nav.Link>
                             <Nav.Link as={Link} to="/calendario">Calendario</Nav.Link>
-                            <Nav.Link as={Link} to="/eventos">Eventos / Torneos pasados</Nav.Link>
+                            <Nav.Link as={Link} to="/torneos">Torneos pasados</Nav.Link>
                             <Nav.Link as={Link} to="/galeria">Galería de fotos</Nav.Link>
                             <Nav.Link as={Link} to="/formacion">Formación</Nav.Link>
                             <Nav.Link as={Link} to="/jugadores">Jugadores</Nav.Link>
-                            <Nav.Link as={Link} to="/base-de-datos">Base de datos</Nav.Link>
+                            
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

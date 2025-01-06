@@ -4,6 +4,7 @@ import { IconChevronLeft, IconChevronRight } from './Icons.jsx';
 import { useEvents } from '../hooks/useEvents';
 import './Calendar.css';
 
+
 const DAYS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 

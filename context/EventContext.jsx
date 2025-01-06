@@ -37,15 +37,15 @@ function useFetchEvents() {
 
 
 export function EventProvider({ children }) {
- const events = [
+ /*const events = [
     { date: new Date(2024, 11, 15), title: 'Torneo de Invierno', time: '14:00', location: 'Club de Ajedrez Central' },
     { date: new Date(2024, 11, 22), title: 'Clase Magistral', time: '18:30', location: 'Sala de Conferencias' },
     { date: new Date(2024, 11, 5), title: 'Campeonato Junior', time: '21:00', location: 'Centro Deportivo Municipal' },
     { date: new Date(2025, 0, 5), title: 'Campeonato Senior', time: '20:00', location: 'Club de Ajedrez Central' },
     { date: new Date(2025, 0, 20), title: 'Abierto Club Social', time: '10:00', location: 'Club Social' },
-  ]
+  ]*/
 
-    /*const { data: events = [], isLoading, error } = useFetchEvents()
+    const { data: events = [], isLoading, error } = useFetchEvents()
 
     if (isLoading) {
      return (
@@ -67,7 +67,7 @@ export function EventProvider({ children }) {
      )
    }
   
-   */
+   
 
   return (
     <EventContext.Provider value={{ events }}>

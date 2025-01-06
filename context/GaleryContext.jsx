@@ -33,7 +33,7 @@ export function GaleryProvider({children}){
 
    
     
-  /* const { data: imgs = [], isLoading, error } = useFetchImgs()
+   const { data: imgs = [], isLoading, error } = useFetchImgs()
 
    if (isLoading) {
     return (
@@ -53,8 +53,8 @@ export function GaleryProvider({children}){
         </Alert>
       </Container>
     )
-  }*/
-
+  }
+/*
     const imgs = [
         {id:1, title:'ronda 1', album:'Torneo de 1ra categoria-2024', url:'./abierto.jpg', created_at: "2024-11-28T10:00:00Z"},
         {id:2, title:'ronda 1', album:'Torneo de 1ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
@@ -67,7 +67,7 @@ export function GaleryProvider({children}){
         {id:9, title:'ronda 2', album:'Torneo de 3ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
         {id:10, title:'ronda 2', album:'Torneo de 3ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
       
-      ]
+      ]*/
       
     return(
         <GaleryContext.Provider value={{imgs}}>

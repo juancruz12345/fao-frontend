@@ -1,36 +1,39 @@
-import { createContext} from "react";
+import { createContext, useState} from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Alert, Container, Spinner } from "react-bootstrap";
 
 export const NewsContext = createContext()
 
-function useFetchNews() {
+function useFetchNews(offset, limit) {
   return useQuery({
-   
-    queryKey: ["news"], // Clave única de la consulta
+    queryKey: ["news", offset, limit], // Clave única por offset
     queryFn: async () => {
-      console.log("Fetching news from API...");
-      const response = await fetch("https://fao-backend.onrender.com/news", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      })
+      const response = await fetch(`https://fao-backend.onrender.com/news?offset=${offset}&limit=${limit}`);
       if (!response.ok) {
-        throw new Error("Error al cargar la pagina")
+        throw new Error("Error al cargar las noticias");
       }
-      return response.json()
+      console.log('fetch news')
+      return response.json();
     },
-    staleTime: 1000 * 60 * 5, // Los datos son válidos durante 5 minutos
-    cacheTime: 1000 * 60 * 10, // Mantén los datos en caché durante 10 minutos
+    keepPreviousData: true, // Mantener datos previos mientras carga nuevos
+    staleTime: 1000 * 60 * 20, // Los datos son válidos durante 5 minutos
+    cacheTime: 1000 * 60 * 30, // Mantén los datos en caché durante 10 minutos
     refetchOnWindowFocus: false
-  })
+  });
 }
 
 export function NewsProvider({children}){
 
-  /* const { data: news = [], isLoading, error } = useFetchNews()
+  const [offset, setOffset] = useState(0); 
+  const limit = 10; 
 
-   if (isLoading) {
+  const { data: newsData = { data: [] }, isFetching, error } = useFetchNews(offset, limit);
+
+  const currentNews = newsData.data || [];
+
+   
+
+   if (isFetching) {
     return (
       <Container className="text-center py-5">
         <Spinner animation="border" role="status">
@@ -48,8 +51,8 @@ export function NewsProvider({children}){
         </Alert>
       </Container>
     )
-  }*/
-    const news = [
+  }
+    /*const currentNews = [
       {
         id: 1,
         title: "Gran Torneo de Verano 2025",
@@ -93,10 +96,10 @@ export function NewsProvider({children}){
         image_url: ".././multimedia.normal.8bd773ebe5a70c35.U2NyZWVuc2hvdF8yMDI0MDQyMy0wNDIzMzFfV2hhdHNfbm9ybWFsLndlYnA=.jpg.webp?height=200&width=400"
       }
      
-    ]
+    ]*/
 
     return (
-        <NewsContext.Provider value={{ news }}>
+        <NewsContext.Provider value={{ currentNews, setOffset,offset, limit }}>
           {children}
         </NewsContext.Provider>
       )

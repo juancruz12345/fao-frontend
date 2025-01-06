@@ -270,3 +270,89 @@ export function IconChessKnight(props) {
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
     )
   }
+
+  export function IconMapPin(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      viewBox="0 0 24 24"
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon"
+      
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" /></svg>
+    )
+  }
+  export function IconStar(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      viewBox="0 0 24 24"
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon-star"
+      
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+    )
+  }
+  export function IconTable(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon"
+      
+      >
+      <path d="M10 3v18" /></svg>
+    )
+  }
+
+  export function IconSearch(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon"
+      
+      >
+      <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+    )
+  }
+
+  export function IconX(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon"
+      
+      >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+    )
+  }

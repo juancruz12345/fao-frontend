@@ -1,0 +1,24 @@
+.tournaments-div{
+  cursor: pointer;
+}
+.tournaments-container {
+    padding: 20px;
+  }
+  
+  .tournament-card {
+    transition: transform 0.2s;
+  }
+  
+  .tournament-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .tournaments-container {
+      padding: 10px;
+    }
+  }
+  
+  

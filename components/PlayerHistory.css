@@ -1,0 +1,101 @@
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.5em 1em;
+  }
+  
+  .table th {
+    background-color: #f8f9fa;
+  }
+  
+  .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    border-color: #86b7fe;
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  h1 {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  .card-title {
+    color: #2c3e50;
+  }
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+  
+  .match-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .player-name {
+    font-weight: 500;
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 576px) {
+    .match-result {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .player-name {
+      width: 100%;
+      margin: 0.25rem 0;
+    }
+  
+    .badge {
+      margin: 0.5rem 0;
+    }
+  }
+  
+  /* Ensure buttons stack nicely on mobile */
+  @media (max-width: 768px) {
+    .d-flex.gap-2 {
+      flex-direction: column;
+    }
+    
+    .d-flex.gap-2 .btn {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  /* Make form controls more touch-friendly on mobile */
+  @media (max-width: 576px) {
+    .form-control {
+      height: 45px;
+      font-size: 16px;
+    }
+  
+    .btn {
+      height: 45px;
+      font-size: 16px;
+    }
+  }
+  
+  

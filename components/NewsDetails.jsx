@@ -1,19 +1,27 @@
-import { useNews } from "../hooks/useNews"
+
 import { useParams } from "react-router-dom"
 import { Card, Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './NewsDetails.css'
 import { Loading } from "./Loading"
 import {IconCalendar, IconClock} from './Icons'
+import { useLocation } from "react-router-dom"
 
 export function NewsDetails(){
 
-    //window.scroll(0,0)
+    window.scroll(0,0)
 
     const {id} = useParams()
-    const {news} = useNews()
-    const newsSingle = news.find(p => p.id === parseInt(id))
-    const otherNews = news.filter(p => p.id !== parseInt(id))
+   
+    const location = useLocation()
+   
+  const { currentNews } = location.state || {};
+
+   
+    const newsSingle = currentNews.find(p => p.id === parseInt(id))
+    const otherNews = currentNews.filter(p => p.id !== parseInt(id)).slice(0,5)
+
+    
       
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };

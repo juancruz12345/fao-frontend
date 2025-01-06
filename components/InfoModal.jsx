@@ -1,5 +1,5 @@
 
-import { Modal, Button, Table, Card, Image } from 'react-bootstrap';
+import { Modal, Button, Table, Card } from 'react-bootstrap';
 import './InfoModal.css';
 import './Players.css';
 
@@ -102,9 +102,11 @@ export function InfoModal({ show, setShow, element }) {
         {
             element?.title === 'Sede FAO' && (
                <div>
-                 <h3>Club Social Olavarría. 1° Piso</h3>
+                <img loading='lazy' width={400} height={200} src={'./club_social.jpg'}></img>
                 <br></br>
-                <h4>Direccion: General Paz 2734</h4>
+                 <h4>Club Social Olavarría. 1° Piso</h4>
+                <br></br>
+                <p>Direccion: General Paz 2734</p>
                </div>
             )
         }
@@ -126,10 +128,10 @@ export function InfoModal({ show, setShow, element }) {
                   ?.filter(player => player.club === club.nombre)
                   .map((player, index) => (
                     <li key={index} className="entity-card">
-                      <p>{player.nombre}</p> {/* Muestra el nombre u otra información del jugador */}
+                      <p>{player.name}</p> {/* Muestra el nombre u otra información del jugador */}
                     </li>
                   ))
-                  :<>No hay jugadores</>
+                  :<>No hay jugadores registrados</>
               }
              </ul>
             </Card.Body>
@@ -149,17 +151,17 @@ export function InfoModal({ show, setShow, element }) {
             <th>Nombre</th>
           
             <th>Rating</th>
-            <th>Elo</th>
+          
            
           </tr>
         </thead>
         <tbody>
           {element?.players && element?.players?.map((player) => (
             <tr key={player.id}>
-              <td>{player.nombre}</td>
+              <td>{player.name}</td>
            
               <td>{player.rating}</td>
-              <td>{player.elo}</td>
+              
               
             </tr>
           ))}
@@ -169,13 +171,7 @@ export function InfoModal({ show, setShow, element }) {
             )
         }
       </Modal.Body>
-      <Modal.Footer className="custom-modal-footer">
-       {/**
-        *  <Button variant="secondary" onClick={() => setShow(false)}>
-          Cerrar
-        </Button>
-        */}
-      </Modal.Footer>
+     
     </Modal>
   );
 }

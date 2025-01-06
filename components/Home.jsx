@@ -1,27 +1,35 @@
 /* eslint-disable react/prop-types */
 import React from "react"
-import { Container, Row, Col, Card, Pagination } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import './Home.css'
 import { useEvents } from "../hooks/useEvents"
 import { useNews } from "../hooks/useNews"
-import { IconUsers, IconFileText, IconBuilding, IconList, IconChartBar, IconTrophy, IconClock } from "./Icons"
+import { IconUsers, IconFileText, IconBuilding, IconList, IconChartBar, IconTrophy, IconClock, IconChevronLeft, IconChevronRight } from "./Icons"
 import { useState } from "react"
 import { InfoModal } from "./InfoModal"
 import { ElementsArray } from "../elements"
+import { useNavigate } from "react-router-dom"
+import { useTheme } from "../context/ThemeContext"
 
 export function Home() {
   
-  const {currentPage, currentNews, news, newsPerPage, paginate} = useNews()
+  
+  const {theme} = useTheme()
   const {upcomingEvents, formatDate} = useEvents()
-
+  const { currentNews, loadMore, isFetching, loadLess,offset } = useNews();
   const {elements} = ElementsArray()
   const [element, setElement] = useState({})
   const [show, setShow] = useState(false)
+  const navigate = useNavigate();
+  
+  
+  const goToNewsDetail = (id) => {
+    navigate(`/noticias/${id}`, { state: { currentNews } }); 
+  }
   
  
   return (
-    <div className="bg-light min-vh-100">
+    <div className="container-home">
       <Container fluid className="py-4" id="container-home">
         <Row className="g-4">
           {/* Columna de navegación */}
@@ -51,11 +59,10 @@ export function Home() {
             <h2 className="mb-4" id="news-h2">Últimas Noticias</h2>
             {currentNews.map((item) => (
               <Card key={item.id} className="mb-4">
-                <Link to={`/noticias/${item.id}`}>
-                  <Card.Img loading="lazy" variant="top" src={item.image_url} alt={item.title} />
-                </Link>
+                 <Card.Img className="card-news-img" onClick={()=>{goToNewsDetail(item.id)}}  loading="lazy" variant="top" src={item.image_url} alt={item.title} />
+             
                 <Card.Body>
-                  <Link className="link-news" to={`/noticias/${item.id}`}><Card.Title className="card-title">{item.title}</Card.Title></Link>
+                 <Card.Title onClick={()=>{goToNewsDetail(item.id)}}  className="card-news-title">{item.title}</Card.Title>
                   <Card.Text className="card-subtitle">{item.content}</Card.Text>
                   <div className="text-muted">
                     <IconClock width={20} height={20} />
@@ -64,13 +71,26 @@ export function Home() {
                 </Card.Body>
               </Card>
             ))}
-            <Pagination className="justify-content-center">
-              {[...Array(Math.ceil(news.length / newsPerPage)).keys()].map((number) => (
-                <Pagination.Item key={number + 1} active={number + 1 === currentPage} onClick={() => paginate(number + 1)}>
-                  {number + 1}
-                </Pagination.Item>
-              ))}
-            </Pagination>
+           
+
+      <div className="btn-news-div">
+
+      {
+        offset>0 && currentNews.length>0
+        ? <Button variant={theme} className="btn-load-news" onClick={loadLess} disabled={isFetching}>
+      <IconChevronLeft></IconChevronLeft>Más actuales
+      </Button>
+      :<></>
+      }
+    {
+      currentNews.length>0 && currentNews.length===10  ?
+        <Button variant={theme} onClick={loadMore} disabled={isFetching}>
+        Más antiguas<IconChevronRight></IconChevronRight>
+      </Button>
+      :<></>
+    }
+      </div>
+     
           </Col>
 
           {/* Columna de torneos */}
@@ -125,6 +145,8 @@ function TournamentItem({ title, time, location, date }) {
     </div>
   )
 }
+
+
 
 
 
