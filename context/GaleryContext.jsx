@@ -1,8 +1,7 @@
-import { createContext } from "react";
+import { createContext, useState, useContext, useMemo } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 
-import React from 'react';
 
 export const GaleryContext = createContext()
 
@@ -29,6 +28,31 @@ function useFetchImgs() {
     })
   }
 
+export function useGalery(page=1, limit=10){
+
+
+    const {imgs} = useContext(GaleryContext)
+    if(!imgs){
+      throw new Error('no context')
+    }
+
+    const [currentPage, setCurrentPage] = useState(page);
+
+    const { paginatedImgs, totalPages } = useMemo(() => {
+        const startIndex = (currentPage - 1) * limit
+        const endIndex = startIndex + limit
+        const paginatedImgs = imgs.slice(startIndex, endIndex)
+        const totalPages = Math.ceil(imgs.length / limit)
+        return { paginatedImgs, totalPages }
+      }, [imgs, currentPage, limit])
+    
+      const goToPage = (newPage) => {
+        setCurrentPage(newPage)
+      }
+    
+      return { imgs: paginatedImgs, totalPages, currentPage, goToPage }
+}
+
 export function GaleryProvider({children}){
 
    
@@ -54,20 +78,7 @@ export function GaleryProvider({children}){
       </Container>
     )
   }
-/*
-    const imgs = [
-        {id:1, title:'ronda 1', album:'Torneo de 1ra categoria-2024', url:'./abierto.jpg', created_at: "2024-11-28T10:00:00Z"},
-        {id:2, title:'ronda 1', album:'Torneo de 1ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
-        {id:3, title:'ronda 2', album:'Torneo de 1ra categoria-2024', url:'./multimedia.normal.8bd773ebe5a70c35.U2NyZWVuc2hvdF8yMDI0MDQyMy0wNDIzMzFfV2hhdHNfbm9ybWFsLndlYnA=.jpg.webp', created_at: "2024-11-28T10:00:00Z"},
-        {id:4, title:'ronda 2', album:'Torneo de 1ra categoria-2024', url:'./torneo_juvenil.jpg',created_at: "2024-11-28T10:00:00Z"},
-        {id:5, title:'ronda 1', album:'Torneo de 3ra categoria-2024', url:'./abierto.jpg',created_at: "2024-11-28T10:00:00Z"},
-        {id:6, title:'ronda 1', album:'Torneo de 3ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
-        {id:7, title:'ronda 1', album:'Torneo de 3ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
-        {id:8, title:'ronda 2', album:'Torneo de 3ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
-        {id:9, title:'ronda 2', album:'Torneo de 3ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
-        {id:10, title:'ronda 2', album:'Torneo de 3ra categoria-2024', url:'./depo ajedrez.jpg', created_at: "2024-11-28T10:00:00Z"},
-      
-      ]*/
+
       
     return(
         <GaleryContext.Provider value={{imgs}}>

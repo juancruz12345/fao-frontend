@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Container, Row, Col, Card, Pagination } from 'react-bootstrap';
 import './Galery.css'
 import { ModalComponent } from "./ModalComponent";
-import { useGalery } from "../hooks/useGalery";
+import { GaleryProvider, useGalery } from "../context/GaleryContext";
 
-export function Galery() {
+export function GaleryContent() {
 
   
   const [show, setShow] = useState(false);
@@ -33,7 +33,8 @@ export function Galery() {
   
 
   return (
-    <Container className="py-5">
+    
+      <Container className="py-5">
       <h1 className="text-center mb-4">Galería de fotos</h1>
       <p className="text-center mb-5">
         Explora nuestra colección de imágenes.
@@ -78,6 +79,15 @@ export function Galery() {
       </div>
       <ModalComponent show={show} setShow={setShow} img={img}></ModalComponent>
     </Container>
+
+  )
+}
+
+export function Galery(){
+  return(
+    <GaleryProvider>
+      <GaleryContent></GaleryContent>
+    </GaleryProvider>
   )
 }
 

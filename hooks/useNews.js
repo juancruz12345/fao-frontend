@@ -16,7 +16,9 @@ export function useNews() {
     isFetching,
     loadMore,
     loadLess,
-    offset
+    offset,
+    limit,
+    setOffset
   };
 }
 

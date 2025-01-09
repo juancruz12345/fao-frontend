@@ -1,5 +1,5 @@
 
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { Card, Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './NewsDetails.css'
@@ -12,11 +12,14 @@ export function NewsDetails(){
     window.scroll(0,0)
 
     const {id} = useParams()
-   
+    const navigate = useNavigate()
     const location = useLocation()
    
   const { currentNews } = location.state || {};
-
+  const goToNewsDetail = (id) => {
+    navigate(`/noticias/${id}`, { state: { currentNews } }); 
+  }
+    console.log(currentNews)
    
     const newsSingle = currentNews.find(p => p.id === parseInt(id))
     const otherNews = currentNews.filter(p => p.id !== parseInt(id)).slice(0,5)
@@ -45,9 +48,25 @@ export function NewsDetails(){
                     />
                     <Card.Body>
                         <Card.Title as="h1" className="news-title">{newsSingle.title}</Card.Title>
-                        <Card.Subtitle className="mb-3 text-muted">{newsSingle.content}</Card.Subtitle>
+                       
                         
-                        <Card.Text className="news-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia eligendi possimus qui esse architecto fugit sunt nihil sequi dolore, rem aperiam earum nulla ut corporis dicta aliquam officia quod eos!</Card.Text>
+                        <Card.Text className="news-content">
+                        {newsSingle.content.split("\n").map((parrafo, i) => {
+                            if (parrafo.startsWith("https")) {
+                            return (
+                            <span  key={i}>
+                            <a href={parrafo} target="_blank" rel="noopener noreferrer">
+                                 {parrafo}
+                            </a>
+                            </span >
+                            );
+                    }
+
+   
+                    return <p key={i}>{parrafo}</p>;
+                    })}
+
+                        </Card.Text>
 
                         <div className="news-meta">
                             <span className="news-date">
@@ -68,14 +87,14 @@ export function NewsDetails(){
                 <Col lg={3}>
                     <h3 className="mb-3">Otras Noticias</h3>
                     {otherNews.map((item) => (
-                        <Link key={item.id} to={`/noticias/${item.id}`} className="text-decoration-none">
-                            <Card className="mb-3 other-news-card">
+                        
+                            <Card  key={item.id} className="mb-3 other-news-card" onClick={()=>{goToNewsDetail(item.id)}}>
                                 <Card.Body>
                                     <Card.Title className="other-news-title">{item.title}</Card.Title>
                                     <Card.Text className="text-muted">{formatDate(item.created_at)}</Card.Text>
                                 </Card.Body>
                             </Card>
-                        </Link>
+                       
                     ))}
                 </Col>
             </Row>

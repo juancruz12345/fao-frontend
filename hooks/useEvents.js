@@ -8,6 +8,7 @@ export function useEvents(){
   
   const getUpcomingEvents = () => {
     const now = new Date();
+    
     return events
       .filter(event => event.date >= now)
       .sort((a, b) => a.date - b.date)
@@ -15,7 +16,7 @@ export function useEvents(){
   };
 
   const upcomingEvents = getUpcomingEvents()
-  
+  console.log(events)
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };

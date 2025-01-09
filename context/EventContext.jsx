@@ -1,8 +1,7 @@
 import { createContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Container, Alert, Spinner } from 'react-bootstrap';
-
-import React from 'react';
+import {parseISO} from 'date-fns'
 
 export const EventContext = createContext()
 
@@ -22,36 +21,30 @@ function useFetchEvents() {
         throw new Error("Error al cargar las imagenes")
       }
       const events = await response.json()
-      
+     
   // Transformar las fechas en objetos Date
       return events.map(event => ({
         ...event,
-          date: new Date(event.date), 
+          date: parseISO(event.date), 
         }))
     },
-    staleTime: 1000 * 60 * 5, 
-    cacheTime: 1000 * 60 * 10, 
+    staleTime: 1000 * 60 * 20, 
+    cacheTime: 1000 * 60 * 30, 
     refetchOnWindowFocus: false
   })
 }
 
 
 export function EventProvider({ children }) {
- /*const events = [
-    { date: new Date(2024, 11, 15), title: 'Torneo de Invierno', time: '14:00', location: 'Club de Ajedrez Central' },
-    { date: new Date(2024, 11, 22), title: 'Clase Magistral', time: '18:30', location: 'Sala de Conferencias' },
-    { date: new Date(2024, 11, 5), title: 'Campeonato Junior', time: '21:00', location: 'Centro Deportivo Municipal' },
-    { date: new Date(2025, 0, 5), title: 'Campeonato Senior', time: '20:00', location: 'Club de Ajedrez Central' },
-    { date: new Date(2025, 0, 20), title: 'Abierto Club Social', time: '10:00', location: 'Club Social' },
-  ]*/
+ 
 
     const { data: events = [], isLoading, error } = useFetchEvents()
-
+   
     if (isLoading) {
      return (
        <Container className="text-center py-5">
          <Spinner animation="border" role="status">
-           <span className="visually-hidden">Loading...</span>
+           <span className="visually-hidden">Cargando eventos...</span>
          </Spinner>
        </Container>
      );

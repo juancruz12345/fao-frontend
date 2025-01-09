@@ -356,3 +356,21 @@ export function IconChessKnight(props) {
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
     )
   }
+
+  export function IconChevronsLeft(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon"
+      
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 7l-5 5l5 5" /><path d="M17 7l-5 5l5 5" /></svg>
+      
+    )
+  }

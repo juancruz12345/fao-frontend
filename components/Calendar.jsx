@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, Card, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, OverlayTrigger, Tooltip, Button, Modal } from 'react-bootstrap';
 import { IconChevronLeft, IconChevronRight } from './Icons.jsx';
 import { useEvents } from '../hooks/useEvents';
 import './Calendar.css';
@@ -11,7 +11,14 @@ const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
   const { events } = useEvents()
-  console.log(events)
+  const [showModal, setShowModal] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
+  const handleShowModal = (event) => {
+    setSelectedEvent(event);
+    setShowModal(true);
+  };
+  
 
   const getDaysInMonth = (date) => {
     
@@ -43,21 +50,31 @@ export function Calendar() {
         <div key={i} className={`calendar-day ${dayEvents.length > 0 ? 'has-event' : ''}`}>
           <span className="day-number">{i}</span>
           {dayEvents.map((event, index) => (
-            <OverlayTrigger
-              key={index}
-              placement="top"
-              overlay={
-                <Tooltip id={`tooltip-${i}-${index}`}>
-                  <strong>{event.title}</strong><br />
-                  Hora: {event.time}<br />
-                  Lugar: {event.location}
-                </Tooltip>
-              }
-            >
-              <div className="event-title">
-                {event.title}
-              </div>
-            </OverlayTrigger>
+            <div key={index} className="event-container">
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip id={`tooltip-${i}-${index}`}>
+                    <strong>{event.title}</strong><br />
+                    Hora: {event.time}<br />
+                    Lugar: {event.location}
+                  </Tooltip>
+                }
+              >
+                <div className="event-title">
+                  {event.title}
+                </div>
+              </OverlayTrigger>
+    
+              <Button 
+                variant="outline-primary" 
+                
+                className="view-description-btn"
+                onClick={() => handleShowModal(event)}
+              >
+                Ver Detalles
+              </Button>
+            </div>
           ))}
         </div>
       )
@@ -93,6 +110,18 @@ export function Calendar() {
           </div>
         </Card.Body>
       </Card>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedEvent?.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p><strong>Fecha:</strong> {selectedEvent?.date.toLocaleDateString()}</p>
+          <p><strong>Hora:</strong> {selectedEvent?.time}</p>
+          <p><strong>Lugar:</strong> {selectedEvent?.location}</p>
+          <p><strong>Descripción:</strong> {selectedEvent?.description}</p>
+        </Modal.Body>
+       
+      </Modal>
     </Container>
   )
 }

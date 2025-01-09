@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import './Home.css'
 import { useEvents } from "../hooks/useEvents"
 import { useNews } from "../hooks/useNews"
-import { IconUsers, IconFileText, IconBuilding, IconList, IconChartBar, IconTrophy, IconClock, IconChevronLeft, IconChevronRight } from "./Icons"
+import { IconUsers, IconFileText, IconBuilding, IconList, IconChartBar, IconTrophy, IconClock, IconChevronLeft, IconChevronRight, IconChevronsLeft } from "./Icons"
 import { useState } from "react"
 import { InfoModal } from "./InfoModal"
 import { ElementsArray } from "../elements"
@@ -16,7 +16,7 @@ export function Home() {
   
   const {theme} = useTheme()
   const {upcomingEvents, formatDate} = useEvents()
-  const { currentNews, loadMore, isFetching, loadLess,offset } = useNews();
+  const { currentNews, loadMore, isFetching, loadLess,offset, limit, setOffset } = useNews();
   const {elements} = ElementsArray()
   const [element, setElement] = useState({})
   const [show, setShow] = useState(false)
@@ -26,12 +26,13 @@ export function Home() {
   const goToNewsDetail = (id) => {
     navigate(`/noticias/${id}`, { state: { currentNews } }); 
   }
-  
+  console.log(currentNews)
  
   return (
     <div className="container-home">
       <Container fluid className="py-4" id="container-home">
         <Row className="g-4">
+       
           {/* Columna de navegación */}
           <Col lg={3}>
             <Card>
@@ -63,7 +64,7 @@ export function Home() {
              
                 <Card.Body>
                  <Card.Title onClick={()=>{goToNewsDetail(item.id)}}  className="card-news-title">{item.title}</Card.Title>
-                  <Card.Text className="card-subtitle">{item.content}</Card.Text>
+                 
                   <div className="text-muted">
                     <IconClock width={20} height={20} />
                     {formatDate(item.created_at)}
@@ -83,10 +84,22 @@ export function Home() {
       :<></>
       }
     {
-      currentNews.length>0 && currentNews.length===10  ?
+      currentNews.length>0 && currentNews.length===limit  ?
         <Button variant={theme} onClick={loadMore} disabled={isFetching}>
         Más antiguas<IconChevronRight></IconChevronRight>
       </Button>
+      :<></>
+    }
+    {
+      currentNews.length===0 ?
+      <div>
+        <Button variant={theme} className="btn-load-news" onClick={loadLess} disabled={isFetching}>
+      <IconChevronLeft></IconChevronLeft>Más actuales
+      </Button>
+      <Button variant={theme} className="btn-load-news" onClick={()=>{setOffset(0)}} disabled={isFetching}>
+      <IconChevronsLeft></IconChevronsLeft>Últimas noticias
+      </Button>
+      </div>
       :<></>
     }
       </div>

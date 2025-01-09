@@ -1,19 +1,16 @@
 
 
 import { useTournament } from "../context/TournamentContext";
-import { usePlayers } from "../context/PlayerContext";
 import { Container, Row, Col } from "react-bootstrap";
 import './Tournaments.css';
 import { Tournament } from './Tournament';
 import { useNavigate } from "react-router-dom";
+import { TournamentProvider } from "../context/TournamentContext";
 
 
-export function Tournaments() {
+export function TournamentsContent() {
   const { tournaments } = useTournament();
-  
-
   const navigate = useNavigate();
-  
   
   const goToTournamentDetail = (id) => {
     navigate(`/torneo/${id}`, { state: { tournaments } })
@@ -34,5 +31,13 @@ export function Tournaments() {
       </Row>
     </Container>
   );
+}
+
+export function Tournaments(){
+  return(
+    <TournamentProvider>
+      <TournamentsContent></TournamentsContent>
+    </TournamentProvider>
+  )
 }
 
