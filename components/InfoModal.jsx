@@ -156,10 +156,10 @@ export function InfoModal({ show, setShow, element }) {
           </tr>
         </thead>
         <tbody>
-          {element?.players && element?.players?.map((player) => (
+          {element?.players && element?.players.sort((a, b) => b.rating - a.rating).map((player) => (
             <tr key={player.id}>
               <td>{player.name}</td>
-           
+          
               <td>{player.rating}</td>
               
               
