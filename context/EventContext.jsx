@@ -2,6 +2,7 @@ import { createContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Container, Alert, Spinner } from 'react-bootstrap';
 import {parseISO} from 'date-fns'
+import { Loading } from '../components/Loading';
 
 export const EventContext = createContext()
 
@@ -42,11 +43,7 @@ export function EventProvider({ children }) {
    
     if (isLoading) {
      return (
-       <Container className="text-center py-5">
-         <Spinner animation="border" role="status">
-           <span className="visually-hidden">Cargando eventos...</span>
-         </Spinner>
-       </Container>
+      <Loading msg={'Cargando eventos'} />
      );
    }
  

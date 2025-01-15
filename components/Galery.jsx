@@ -40,7 +40,7 @@ export function GaleryContent() {
         Explora nuestra colección de imágenes.
       </p>
       <Row xs={1} sm={2} md={3} lg={4} className="g-4">
-        {imgs.map((img, index) => (
+        {Array.isArray(imgs) && imgs?.map((img, index) => (
           <Col key={index}>
             <Card className="h-100" id="card-galery">
               <Card.Img
@@ -83,7 +83,7 @@ export function GaleryContent() {
   )
 }
 
-export function Galery(){
+export default function Galery(){
   return(
     <GaleryProvider>
       <GaleryContent></GaleryContent>

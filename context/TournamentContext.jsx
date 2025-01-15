@@ -1,13 +1,34 @@
 import { createContext, useContext } from "react";
 import { Spinner, Alert, Container } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
+import { Loading } from "../components/Loading";
 
 export const TournamentContext = createContext()
 
 export function TournamentProvider({children}){
 
+  
+  const { data: broadcasts = [], isLoading, isError } = useQuery({
+    queryKey: ["broadcasts",],
+    queryFn: async () => {
+      console.log("Fetching tournaments from API...");
+      const response = await fetch(`https://lichess.org/api/broadcast/by/FAOenvivo`)
+      
+      if (!response.ok) {
+        throw new Error("Error al cargar la página")
+      }
+      
+      const data = await response.json()
+      const broadcasts = data.currentPageResults 
+      console.log(broadcasts)
+      return broadcasts
+    },
+    staleTime: 1000 * 60 * 20,
+    cacheTime: 1000 * 60 * 30,
+    refetchOnWindowFocus: false
+  })
 
-    function useFetchTournaments() {
+    /*function useFetchTournaments() {
         return useQuery({
          
           queryKey: ["tournaments"], // Clave única de la consulta
@@ -27,27 +48,23 @@ export function TournamentProvider({children}){
           cacheTime: 1000 * 60 * 30, // Mantén los datos en caché durante 10 minutos
           refetchOnWindowFocus: false
         })
-      }
+      }*/
 
       
-   const { data: tournaments = [], isLoading, error } = useFetchTournaments()
+   ///const { data: tournaments = [], isLoading, error } = useFetchTournaments()
   
 
    if (isLoading) {
     return (
-      <Container className="text-center py-5">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </Container>
+      <Loading msg={'Cargando torneos'} />
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Container className="py-5">
         <Alert variant="danger">
-          Error: {error}
+          Error: {isError}
         </Alert>
       </Container>
     )
@@ -55,7 +72,7 @@ export function TournamentProvider({children}){
 
    
    return (
-           <TournamentContext.Provider value={{ tournaments }}>
+           <TournamentContext.Provider value={{ broadcasts }}>
              {children}
            </TournamentContext.Provider>
          )

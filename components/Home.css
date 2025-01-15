@@ -15,6 +15,17 @@ h1, h2, h3, h4, h5, h6 {
   .cursor-pointer {
     cursor: pointer;
   }
+ 
+  #col-nav{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+  #card-news-home{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+  #col-events{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+  
 
   #news-h2{
     margin-top: 20px;
@@ -50,6 +61,7 @@ h1, h2, h3, h4, h5, h6 {
   /*-.---------------CARDS-NEWS----------------------------------*/
   .card-news-img{
     cursor: pointer;
+    max-height: 400px;
   }
   .card-news-title{
     cursor: pointer;
@@ -59,20 +71,16 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
   }
 
-  footer{
-    
-    p{
-      padding-top: 200px;
-      padding-bottom: 20px;
-      text-align: center;
-      
-    }
-  }
+
+
+  
 
   [data-bs-theme=dark]{
     background: #1a1d20 !important; 
    
-
+    .loading{
+      background: #1a1d20 !important; 
+    }
     #container-home{
       background: #1a1d20 !important; 
     }
@@ -80,6 +88,15 @@ h1, h2, h3, h4, h5, h6 {
     #nav-item{
       color:#dee2e6 !important;
       
+    }
+    #col-nav{
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    }
+    #card-news-home{
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    }
+    #col-events{
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
     }
 
     .hover-bg-light:hover {

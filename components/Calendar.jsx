@@ -8,7 +8,7 @@ import './Calendar.css';
 const DAYS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
-export function Calendar() {
+export default function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
   const { events } = useEvents()
   const [showModal, setShowModal] = useState(false);
@@ -119,6 +119,7 @@ export function Calendar() {
           <p><strong>Hora:</strong> {selectedEvent?.time}</p>
           <p><strong>Lugar:</strong> {selectedEvent?.location}</p>
           <p><strong>Descripción:</strong> {selectedEvent?.description}</p>
+         
         </Modal.Body>
        
       </Modal>

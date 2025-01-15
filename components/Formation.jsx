@@ -1,4 +1,4 @@
-export function Formation(){
+export default function Formation(){
 
     return(
         <div>

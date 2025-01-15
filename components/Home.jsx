@@ -11,7 +11,7 @@ import { ElementsArray } from "../elements"
 import { useNavigate } from "react-router-dom"
 import { useTheme } from "../context/ThemeContext"
 
-export function Home() {
+export default function Home() {
   
   
   const {theme} = useTheme()
@@ -26,7 +26,7 @@ export function Home() {
   const goToNewsDetail = (id) => {
     navigate(`/noticias/${id}`, { state: { currentNews } }); 
   }
-  console.log(currentNews)
+  
  
   return (
     <div className="container-home">
@@ -35,19 +35,19 @@ export function Home() {
        
           {/* Columna de navegación */}
           <Col lg={3}>
-            <Card>
+            <Card id='col-nav'>
               <Card.Body className="p-0">
                 <div className="border-bottom p-3">
                   
-                  <NavItem icon={<IconUsers/>} text="Dirigencia" handleElement={()=>{setElement(elements[1]),setShow(true)}} />
-                  <NavItem icon={<IconFileText />} text="Estatuto FAO" handleElement={()=>{setElement(elements[2]),setShow(true)}}/>
-                  <NavItem icon={<IconFileText />} text="Reglamento FAO" handleElement={()=>{setElement(elements[3]),setShow(true)}}/>
-                  <NavItem icon={<IconBuilding />} text="Entidades afiliadas" handleElement={()=>{setElement(elements[4]),setShow(true)}}/>
-                  <NavItem icon={<IconBuilding />} text="Sede FAO"  handleElement={()=>{setElement(elements[5]),setShow(true)}}/>
+                  <NavItem icon={<IconUsers/>} text="Dirigencia" handleElement={() => {if (Array.isArray(elements) && elements[1]) {setElement(elements[1]);setShow(true);}}} />
+                  <NavItem icon={<IconFileText />} text="Estatuto FAO" handleElement={()=>{if (Array.isArray(elements) && elements[2]) {setElement(elements[2]);setShow(true);}}}/>
+                  <NavItem icon={<IconFileText />} text="Reglamento FAO" handleElement={()=>{if (Array.isArray(elements) && elements[3]) {setElement(elements[3]);setShow(true);}}}/>
+                  <NavItem icon={<IconBuilding />} text="Entidades afiliadas" handleElement={()=>{if (Array.isArray(elements) && elements[4]) {setElement(elements[4]);setShow(true);}}}/>
+                  <NavItem icon={<IconBuilding />} text="Sede FAO"  handleElement={()=>{if (Array.isArray(elements) && elements[5]) {setElement(elements[5]);setShow(true);}}}/>
                 </div>
                 <div className="p-3">
-                  <NavItem icon={<IconList />} text="Listado clubes" handleElement={()=>{setElement(elements[6]),setShow(true)}}/>
-                  <NavItem icon={<IconChartBar />} text="Rating" handleElement={()=>{setElement(elements[7]),setShow(true)}} />
+                  <NavItem icon={<IconList />} text="Listado clubes" handleElement={()=>{if (Array.isArray(elements) && elements[6]) {setElement(elements[6]);setShow(true);}}}/>
+                  <NavItem icon={<IconChartBar />} text="Rating" handleElement={()=>{if (Array.isArray(elements) && elements[7]) {setElement(elements[7]);setShow(true);}}} />
                 </div>
               </Card.Body>
             </Card>
@@ -58,8 +58,8 @@ export function Home() {
           <Col lg={6}>
            
             <h2 className="mb-4" id="news-h2">Últimas Noticias</h2>
-            {currentNews.map((item) => (
-              <Card key={item.id} className="mb-4">
+            {Array.isArray(currentNews) && currentNews.map((item) => (
+              <Card key={item.id} className="mb-4" id="card-news-home">
                  <Card.Img className="card-news-img" onClick={()=>{goToNewsDetail(item.id)}}  loading="lazy" variant="top" src={item.image_url} alt={item.title} />
              
                 <Card.Body>
@@ -108,10 +108,10 @@ export function Home() {
 
           {/* Columna de torneos */}
           <Col lg={3}>
-            <Card>
+            <Card id="col-events">
               <Card.Body>
                 <Card.Title className="mb-4">Próximos Torneos</Card.Title>
-                {upcomingEvents.length > 0 ? (
+                {Array.isArray(upcomingEvents) && upcomingEvents.length > 0 ? (
                   upcomingEvents.map((event, index) => (
                     <div key={index}>
                       <TournamentItem 

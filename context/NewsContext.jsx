@@ -1,6 +1,7 @@
 import { createContext, useState} from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Alert, Container, Spinner } from "react-bootstrap";
+import { Loading } from "../components/Loading";
 
 export const NewsContext = createContext()
 
@@ -35,11 +36,7 @@ export function NewsProvider({children}){
 
    if (isFetching) {
     return (
-      <Container className="text-center py-5">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </Container>
+      <Loading msg={'Cargando noticias'} />
     );
   }
 

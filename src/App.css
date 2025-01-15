@@ -7,7 +7,34 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
   }
+  .loading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: white !important;
+    
+  }
+  footer{
+    margin-top: 40px;
+    p{
+      padding-top: 200px;
+      padding-bottom: 20px;
+      text-align: center;
+      
+    }
+  }
 
   [data-bs-theme=dark]{
+
     body{background: #1a1d20 !important;}
+
+    .loading{
+      background: #1a1d20 !important; 
+    }
+
   }

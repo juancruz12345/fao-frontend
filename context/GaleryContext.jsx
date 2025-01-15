@@ -1,7 +1,7 @@
 import { createContext, useState, useContext, useMemo } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
-
+import { Loading } from "../components/Loading";
 
 export const GaleryContext = createContext()
 
@@ -61,11 +61,7 @@ export function GaleryProvider({children}){
 
    if (isLoading) {
     return (
-      <Container className="text-center py-5">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </Container>
+      <Loading msg={'Cargando galería'} />
     );
   }
 

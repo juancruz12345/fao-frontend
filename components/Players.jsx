@@ -7,9 +7,9 @@ import { useTheme } from "../context/ThemeContext"
 import { IconChevronRight } from "./Icons";
 import { PlayerProvider } from "../context/PlayerContext";
 
-export function Players() {
+export default function Players() {
   const { players } = usePlayers();
-  console.log(players)
+  
   const orderByRating = players.sort((a, b) => b.rating - a.rating)
 
   const navigate = useNavigate()
@@ -36,7 +36,7 @@ export function Players() {
           </tr>
         </thead>
         <tbody>
-          {orderByRating && orderByRating.map((player) => (
+          {Array.isArray(orderByRating) && orderByRating && orderByRating.map((player) => (
             <tr key={player.id}>
               <td>{player.name}</td>
               <td>{player.category}</td>

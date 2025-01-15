@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Container, Spinner, Alert } from "react-bootstrap";
-
+import { Container, Alert } from "react-bootstrap";
+import { Loading } from "../components/Loading";
 export const PlayerContext = createContext()
 
 function useFetchPlayers() {
@@ -31,11 +31,7 @@ export function PlayerProvider({children}){
      
         if (isLoading) {
          return (
-           <Container className="text-center py-5">
-             <Spinner animation="border" role="status">
-               <span className="visually-hidden">Loading...</span>
-             </Spinner>
-           </Container>
+          <Loading msg={'Cargando jugadores'} />
          );
        }
      

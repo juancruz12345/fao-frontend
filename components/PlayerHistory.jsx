@@ -3,8 +3,9 @@ import { useQuery } from "@tanstack/react-query"
 import { Card, Badge, Table, Form, Button, Container, Row, Col } from "react-bootstrap"
 import { useState } from "react"
 import { IconSearch, IconX } from '../components/Icons.jsx'
+import { Loading } from "./Loading.jsx"
 
-export function PlayerHistory() {
+export default function PlayerHistory() {
   const { id } = useParams()
   const location = useLocation()
   const { players } = location.state || {}
@@ -50,14 +51,14 @@ export function PlayerHistory() {
     setSearchingMatch([])
   }
 
-  if (isLoading) return <div className="text-center">Cargando...</div>
+  if (isLoading) return <Loading msg={'Cargando historial'}></Loading>
   if (isError) return <div className="text-center text-danger">Error al cargar el historial del jugador</div>
 
   return (
     <Container className="py-5">
       <h1 className="mb-4">{player.name}</h1>
       
-      {playerHistory?.matches?.length > 0 ? (
+      {Array.isArray(playerHistory) && playerHistory?.matches?.length > 0 ? (
         <div>
           <Card className="mb-4">
             <Card.Header>

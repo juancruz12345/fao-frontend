@@ -74,7 +74,7 @@ export function Header() {
                             <Nav.Link as={Link} to="/galeria">Galería de fotos</Nav.Link>
                             <Nav.Link as={Link} to="/formacion">Formación</Nav.Link>
                             <Nav.Link as={Link} to="/jugadores">Jugadores</Nav.Link>
-                            
+                           
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

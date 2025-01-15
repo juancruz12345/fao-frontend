@@ -1,10 +1,14 @@
 import { Spinner } from "react-bootstrap";
 
-export function Loading(){
+
+export function Loading({msg}){
 
     return (
-        <Spinner animation="border" role="status">
+       <div className="loading">
+         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
+        <p>{msg}</p>
+       </div>
       );
 }

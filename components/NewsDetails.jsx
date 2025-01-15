@@ -1,13 +1,12 @@
 
 import { useParams, useNavigate } from "react-router-dom"
 import { Card, Container, Row, Col } from "react-bootstrap"
-import { Link } from "react-router-dom"
 import './NewsDetails.css'
 import { Loading } from "./Loading"
 import {IconCalendar, IconClock} from './Icons'
 import { useLocation } from "react-router-dom"
 
-export function NewsDetails(){
+export default function NewsDetails(){
 
     window.scroll(0,0)
 
