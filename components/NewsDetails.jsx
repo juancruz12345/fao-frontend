@@ -31,7 +31,7 @@ export default function NewsDetails(){
     }
       
     return(
-        <Container className="my-5">
+        <Container className="my-5" id="news-detail-container">
             <Row>
                 <Col lg={9} className="mb-4">
                    {
@@ -58,8 +58,8 @@ export default function NewsDetails(){
                                  {parrafo}
                             </a>
                             </span >
-                            );
-                    }
+                            )
+                            }
 
    
                     return <p key={i}>{parrafo}</p>;

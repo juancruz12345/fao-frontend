@@ -1,0 +1,40 @@
+.formation-container {
+    
+    min-height: 100vh;
+    padding-bottom: 2rem;
+    animation: fade-in 0.5s ease;
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .formation-container h1 {
+    
+    font-weight: bold;
+  }
+  .card{
+    border: none;
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+  .card-header {
+    font-size: 1.1rem;
+    border-bottom: none;
+    
+  }
+  
+  .icon {
+    margin-right: 8px;
+    vertical-align: text-bottom;
+  }
+  
+  .badge {
+    font-size: 0.9rem;
+  }
+
+  

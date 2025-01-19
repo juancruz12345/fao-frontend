@@ -33,11 +33,13 @@ export function ElementsArray(){
         ]},
         {title:'Sede FAO'},
         {title:'Listado de clubes', players:players, 
-            clubes:[{nombre:'Racing', img:'./logos/Escudo_del_Club_Racing_de_Olavarria_-_BSAS.svg'},
+            clubes:[
+                {nombre:'Racing', img:'./logos/Escudo_del_Club_Racing_de_Olavarria_-_BSAS.svg'},
                 {nombre:'Ferro', img:'./logos/ferro.webp'},
-                {nombre:'El Fortin', img:'./logos/elfortin.jpg'},
                 {nombre:'Estudiantes', img:'./logos/Estudiantes_olavarria_logo.png'},
-                {nombre:'San Martin', img:'./logos/sanmartin.jpg'},
+                {nombre:'San Martín de Sierras Bayas', img:'./logos/sanmartin.jpg'},
+                {nombre:'Amoroso', img:'./logos/biblioteca-amoroso.jpg'},
+                {nombre:'Sociedad de Fomento Pueblo Nuevo', img:'./logos/fomento.jpg'},
 
 
             ]

@@ -1,52 +1,34 @@
 import { Card} from "react-bootstrap";
-import { IconTrophy } from "../components/Icons.jsx"
+import { IconTrophy, IconCalendar, IconMapPin, IconChartBar, IconList, IconChessKnight } from "../components/Icons.jsx"
 
 export function Tournament({tournament}){
 
-
+  
   
     
     return(
 
       <Card className="tournament-card h-100 shadow-sm">
       <Card.Header className="tournament-card-header">
-        <Card.Title><IconTrophy className='icon-trophy'></IconTrophy>{tournament?.name}</Card.Title>
+        <Card.Title><IconTrophy ></IconTrophy>{tournament?.name}</Card.Title>
       </Card.Header>
       <Card.Body>
-        <Card.Text>
-          <strong>Lugar:</strong> {tournament?.info?.location}
-          <strong>Formato:</strong> {tournament?.info?.format}
-          <strong>Cant. Rondas:</strong> {tournament?.rounds?.length}
+        <Card.Text className="tournament-card-text">
+          <div><IconMapPin/> <strong>Locacion:</strong> {tournament?.location}</div>
+          <div><IconChessKnight/> <strong>Formato:</strong> {tournament?.mode}</div>
+          <div><IconList/> <strong>Cant. de Rondas:</strong> {tournament?.rounds?.length}</div>
     
         </Card.Text>
-       
-        
-   
       
       </Card.Body>
-      {/*
-              <Card className="tournament-card h-100 shadow-sm">
-              <Card.Header className="tournament-card-header">
-                <Card.Title><IconTrophy></IconTrophy>{tournament.name}</Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  <strong>Lugar:</strong> {tournament.location}
-                </Card.Text>
-                <Card.Text>
-                  <strong>Fecha de inicio:</strong> {new Date(tournament.start_date).toLocaleDateString()}
-                </Card.Text>
-              
-              </Card.Body>
-            </Card>
-            */}
+     
             <Card.Footer>
-            <strong>Fecha de inicio:</strong> {new Date(tournament?.dates[0]).toLocaleDateString()}
+            <IconCalendar></IconCalendar> <strong>Fecha de inicio:</strong> {tournament?.start_date}
             </Card.Footer>
     </Card>
        
-          
+        
             
         
-    )
+   )
 }

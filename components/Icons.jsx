@@ -357,6 +357,65 @@ export function IconChessKnight(props) {
     )
   }
 
+  
+
+  export function IconPhone(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon"
+      
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+      
+    )
+  }
+
+  export function IconUser(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon"
+      
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+      
+    )
+  }
+  
+
+  export function IconSortArrows(props){
+    return(
+      <svg  xmlns="http://www.w3.org/2000/svg"  
+      width={props.width || "24"}
+      height={props.height || "24"}
+      
+      fill={props.fill || "none"}
+      stroke={props.stroke || "currentColor"}
+      strokeWidth={props.strokeWidth || "2"}
+      strokeLinecap={props.strokeLinecap || "round"}
+      strokeLinejoin={props.strokeLinejoin || "round"}
+      className="icon"
+      
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 9l4 -4l4 4m-4 -4v14" /><path d="M21 15l-4 4l-4 -4m4 4v-14" /></svg>
+      
+    )
+  }
+
+
+
   export function IconChevronsLeft(props){
     return(
       <svg  xmlns="http://www.w3.org/2000/svg"  
@@ -374,3 +433,30 @@ export function IconChessKnight(props) {
       
     )
   }
+
+export function IconDownload(props){
+  return(
+    <svg  xmlns="http://www.w3.org/2000/svg"  
+    width={props.width || "24"}
+    height={props.height || "24"}
+    
+    fill={props.fill || "none"}
+    stroke={props.stroke || "currentColor"}
+    strokeWidth={props.strokeWidth || "2"}
+    strokeLinecap={props.strokeLinecap || "round"}
+    strokeLinejoin={props.strokeLinejoin || "round"}
+    className="icon"
+    
+    ><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+    
+  )
+}
+
+////<path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+export function IconLink(){
+  return(
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+    
+  )
+}

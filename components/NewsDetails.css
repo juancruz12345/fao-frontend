@@ -1,3 +1,15 @@
+#news-detail-container{
+    animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 .news-details-card {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border: none;

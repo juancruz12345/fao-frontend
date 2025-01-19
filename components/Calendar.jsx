@@ -92,7 +92,7 @@ export default function Calendar() {
   }
 
   return (
-    <Container className="my-5">
+    <Container id='calendar-container' className="my-5">
       <Card>
         <Card.Body>
           <div className="calendar-header">
@@ -118,7 +118,20 @@ export default function Calendar() {
           <p><strong>Fecha:</strong> {selectedEvent?.date.toLocaleDateString()}</p>
           <p><strong>Hora:</strong> {selectedEvent?.time}</p>
           <p><strong>Lugar:</strong> {selectedEvent?.location}</p>
-          <p><strong>Descripción:</strong> {selectedEvent?.description}</p>
+          <p><strong>Descripción:</strong>  {selectedEvent?.description?.split("\n").map((parrafo, i) => {
+                            if (parrafo.startsWith("https")) {
+                            return (
+                            <span  key={i}>
+                            <a href={parrafo} target="_blank" rel="noopener noreferrer">
+                                 {parrafo}
+                            </a>
+                            </span >
+                            )
+                            }
+
+   
+                    return <p key={i}>{parrafo}</p>
+                    })}</p>
          
         </Modal.Body>
        

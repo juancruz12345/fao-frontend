@@ -1,5 +1,5 @@
 
-import { Modal, Button, Table, Card } from 'react-bootstrap';
+import { Modal, Button, Table, Card, Accordion } from 'react-bootstrap';
 import './InfoModal.css';
 import './Players.css';
 
@@ -112,14 +112,20 @@ export function InfoModal({ show, setShow, element }) {
         }
 {
   element?.title === 'Listado de clubes' && (
-    <div>
+    <div className='div-card-clubes'>
       {
         element?.clubes?.map((club, i) => (
           <Card key={i} className='card-clubes'>
-            <Card.Title><img loading='lazy' width={80} height={80} src={club.img}></img><h2>{club.nombre}</h2></Card.Title>
+            
             <Card.Body>
-              <h4>Jugadores</h4>
-             <ul className="list-unstyled">
+              
+            <img loading='lazy' width={80} height={80} src={club.img}></img><h2>{club.nombre}</h2>
+            <Accordion>
+              <Accordion.Item eventKey={i}>
+             <Accordion.Header>
+              Lista de jugadores
+             </Accordion.Header>
+             <Accordion.Body>
              { element?.players
                   ?.filter(player => player.club === club.nombre).length>0
                   ?
@@ -127,13 +133,16 @@ export function InfoModal({ show, setShow, element }) {
                 element?.players
                   ?.filter(player => player.club === club.nombre)
                   .map((player, index) => (
-                    <li key={index} className="entity-card">
+                    <div key={index} className="entity-card">
                       <p>{player.name}</p> {/* Muestra el nombre u otra información del jugador */}
-                    </li>
+                    </div>
                   ))
                   :<>No hay jugadores registrados</>
               }
-             </ul>
+             </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+           
             </Card.Body>
           </Card>
         ))

@@ -1,0 +1,1 @@
+h1{font-weight:700}.tournaments-div{cursor:pointer}.tournaments-container{padding:20px;animation:fade-in .5s ease}@keyframes fade-in{0%{opacity:0}to{opacity:1}}.tournament-card{transition:transform .2s}.tournament-card:hover{transform:translateY(-5px)}.tournament-card-text{display:flex;flex-direction:column}@media (max-width: 768px){.tournaments-container{padding:10px}}

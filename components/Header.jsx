@@ -68,12 +68,14 @@ export function Header() {
                     <Navbar.Toggle aria-controls="second-navbar-nav" />
                     <Navbar.Collapse id="second-navbar-nav" className="second-navbar-collapse">
                         <Nav className="mx-auto">
+                            <Nav.Link as={Link} to="/">Inicio</Nav.Link>
                             <Nav.Link as={Link} to="/historia">Historia</Nav.Link>
                             <Nav.Link as={Link} to="/calendario">Calendario</Nav.Link>
                             <Nav.Link as={Link} to="/torneos">Torneos pasados</Nav.Link>
                             <Nav.Link as={Link} to="/galeria">Galería de fotos</Nav.Link>
                             <Nav.Link as={Link} to="/formacion">Formación</Nav.Link>
                             <Nav.Link as={Link} to="/jugadores">Jugadores</Nav.Link>
+                            <Nav.Link as={Link} to="/basededatos">Base de datos</Nav.Link>
                            
                         </Nav>
                     </Navbar.Collapse>

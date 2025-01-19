@@ -1,0 +1,39 @@
+
+
+#database-container{
+  padding-top: 3rem;
+    animation: fade-in 0.5s ease;
+}
+.title{
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.database-table{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+th,td{
+  vertical-align: middle;
+  text-align: center;
+  
+}
+
+.toast-div {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+}
+
+
+@keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

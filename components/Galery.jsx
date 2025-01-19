@@ -34,7 +34,7 @@ export function GaleryContent() {
 
   return (
     
-      <Container className="py-5">
+      <Container className="py-5" id="galery-container">
       <h1 className="text-center mb-4">Galería de fotos</h1>
       <p className="text-center mb-5">
         Explora nuestra colección de imágenes.
