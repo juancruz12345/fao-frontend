@@ -27,7 +27,7 @@ export function PlayerProvider({children}){
 
 
         const { data: players = [], isLoading, error } = useFetchPlayers()
-      
+        
      
         if (isLoading) {
          return (

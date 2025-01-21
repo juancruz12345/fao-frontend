@@ -4,7 +4,7 @@ import { Table, Container, Button } from 'react-bootstrap';
 import './Players.css';
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext"
-import { IconChevronRight,IconSortArrows } from "./Icons";
+import { IconChevronRight } from "./Icons";
 import { useEffect, useState } from "react";
 
 
@@ -12,15 +12,17 @@ import { useEffect, useState } from "react";
 export default function Players() {
 
   const { players } = usePlayers()
-  const [playersArray, setPlayersArray] = useState([...players].sort((a, b) => a.name.localeCompare(b.name)))
-
+  const filteredPlayers = players?.filter(e=>e?.name!=='LIBRE')
+  const [playersArray, setPlayersArray] = useState([...filteredPlayers].sort((a, b) => a.name.localeCompare(b.name)))
+  
+  
   const orderByName = () => {
-    const byName = [...players].sort((a, b) => a.name.localeCompare(b.name))
+    const byName = [...filteredPlayers].sort((a, b) => a.name.localeCompare(b.name))
     setPlayersArray(byName)
   }
 
   const orderByCategory = () => {
-    const byCategory = [...players].sort((a, b) => {
+    const byCategory = [...filteredPlayers].sort((a, b) => {
       if (!a.category) return 1 
       if (!b.category) return -1
       return a.category.localeCompare(b.category) 
@@ -28,7 +30,7 @@ export default function Players() {
     setPlayersArray(byCategory)
   }
   const orderByClub= () => {
-    const byClub = [...players].sort((a, b) => {
+    const byClub = [...filteredPlayers].sort((a, b) => {
       if (!a.club) return 1 
       if (!b.club) return -1
       return a.club.localeCompare(b.club) 
@@ -37,12 +39,12 @@ export default function Players() {
   }
 
   const orderByRating = () => {
-    const byRating = [...players].sort((a, b) => b.rating - a.rating)
+    const byRating = [...filteredPlayers].sort((a, b) => b.rating - a.rating)
     setPlayersArray(byRating)
   }
 
   const orderByElo = () => {
-    const byElo = [...players].sort((a, b) => b.elo - a.elo)
+    const byElo = [...filteredPlayers].sort((a, b) => b.elo - a.elo)
     setPlayersArray(byElo)
   }
 

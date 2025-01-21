@@ -11,8 +11,9 @@ import { useQuery } from "@tanstack/react-query"
 export default function TournamentDetail() {
   const { id } = useParams()
   const { players } = usePlayers()
-  const playerMap = new Map(players.map((player) => [player.id, player.name]))
-  const getPlayerName = (playerId) => playerMap.get(playerId) || "Unknown Player"
+  const filteredPlayers = players?.filter(e=>e?.name!=='LIBRE')
+  const playerMap = new Map(filteredPlayers.map((player) => [player.id, player.name]))
+  const getPlayerName = (playerId) => playerMap.get(playerId) || "-"
   const location = useLocation()
 
   const { tournaments } = location.state || {}
@@ -37,8 +38,10 @@ export default function TournamentDetail() {
     refetchOnWindowFocus: false,
   })
 
+  const filteredStandings = standings?.filter(e=>e?.player_name!=='LIBRE')
+
   useEffect(() => {
-   
+   console.log(standings)
   }, [id, standings])
 
 
@@ -113,8 +116,8 @@ export default function TournamentDetail() {
                         </tr>
                       </thead>
                       <tbody>
-                        {standings?.length > 0 &&
-                          standings?.map((player, i) => (
+                        {filteredStandings?.length > 0 &&
+                          filteredStandings?.map((player, i) => (
                             <tr key={i}>
                               <td>{player.player_name}</td>
                               <td>{player.points}</td>

@@ -1,5 +1,5 @@
 import { Card} from "react-bootstrap";
-import { IconTrophy, IconCalendar, IconMapPin, IconChartBar, IconList, IconChessKnight } from "../components/Icons.jsx"
+import { IconTrophy, IconCalendar, IconMapPin, IconList, IconChessKnight } from "../components/Icons.jsx"
 
 export function Tournament({tournament}){
 
@@ -14,9 +14,9 @@ export function Tournament({tournament}){
       </Card.Header>
       <Card.Body>
         <Card.Text className="tournament-card-text">
-          <div><IconMapPin/> <strong>Locacion:</strong> {tournament?.location}</div>
-          <div><IconChessKnight/> <strong>Formato:</strong> {tournament?.mode}</div>
-          <div><IconList/> <strong>Cant. de Rondas:</strong> {tournament?.rounds?.length}</div>
+          <span><IconMapPin/> <strong>Locacion:</strong> {tournament?.location}</span>
+          <span><IconChessKnight/> <strong>Formato:</strong> {tournament?.mode}</span>
+          <span><IconList/> <strong>Cant. de Rondas:</strong> {tournament?.rounds?.length}</span>
     
         </Card.Text>
       

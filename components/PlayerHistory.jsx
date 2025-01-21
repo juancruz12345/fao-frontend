@@ -2,7 +2,7 @@ import { useParams, useLocation } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { Card, Badge, Table, Form, Button, Container, Row, Col } from "react-bootstrap"
 import { useEffect, useState } from "react"
-import { IconSearch, IconX, IconDownload, IconUser, IconLink } from '../components/Icons.jsx'
+import { IconSearch, IconX, IconDownload, IconLink } from '../components/Icons.jsx'
 import { Loading } from "./Loading.jsx"
 import { TournamentProvider } from "../context/TournamentContext.jsx"
 import './PlayerHistory.css'
@@ -72,10 +72,11 @@ export function PlayerHistoryContent() {
 
 
 
-  useEffect(()=>{
-  calcularHistorial()
-
-  },[id])
+  useEffect(() => {
+    if (playerHistory?.matches?.length > 0) {
+      calcularHistorial()
+    }
+  }, [playerHistory])
    
 
   const [totalVictories, setTotalVictories] = useState(0)
@@ -254,7 +255,7 @@ export function PlayerHistoryContent() {
           </Row>
         </div>
       ) : (
-        <h2>No hay historial</h2>
+        <h2 className="h2-no-historial">No hay historial del jugador seleccionado</h2>
       )}
       </div>
      }

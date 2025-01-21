@@ -3,6 +3,7 @@ import { usePlayers } from "./context/PlayerContext"
 export function ElementsArray(){
    
     const {players} = usePlayers()
+    const filteredPlayers = players?.filter(e=>e?.name!=='LIBRE')
     const elements = [{title:'historia',content:'sadsadasdasdasdas'},
         {title:'Dirigencia',dirigentes:[
             {nombre:'Hugo Omar Fischer', cargo:'Presidente',dni:'16.019.619'},
@@ -32,7 +33,7 @@ export function ElementsArray(){
             {nombre:'Biblioteca Popular "Héctor Nicolás Amoroso"', direccion:'Deán Funes 3345, B7400 Olavarría, Provincia de Buenos Aires',redes:[], img:'./logos/biblioteca-amoroso.jpg'}
         ]},
         {title:'Sede FAO'},
-        {title:'Listado de clubes', players:players, 
+        {title:'Listado de clubes', players:filteredPlayers, 
             clubes:[
                 {nombre:'Racing', img:'./logos/Escudo_del_Club_Racing_de_Olavarria_-_BSAS.svg'},
                 {nombre:'Ferro', img:'./logos/ferro.webp'},
@@ -44,7 +45,7 @@ export function ElementsArray(){
 
             ]
         },
-        {title:'Rating', players:players}
+        {title:'Rating', players:filteredPlayers}
       ]
 
       return{elements}
