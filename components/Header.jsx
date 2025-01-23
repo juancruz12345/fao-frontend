@@ -2,7 +2,8 @@ import { Navbar, Container, Nav } from "react-bootstrap"
 import { IconFacebook, IconInstagram, IconMoon, IconSun } from "./Icons"
 import './Header.css'
 import { useTheme } from "../context/ThemeContext"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+import { HeroSection } from "./HeroSection"
 
 export function Header() {
 
@@ -10,6 +11,9 @@ export function Header() {
     const {theme, toggleTheme} = useTheme()
     const html = document.querySelector('html')
     html.setAttribute("data-bs-theme", theme)
+    const location = useLocation();
+
+    const isHome = location.pathname === '/'; 
     
 
     return (
@@ -30,6 +34,19 @@ export function Header() {
                         </Nav.Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="second-navbar-nav" className="second-navbar-collapse">
+                        <Nav className="mx-auto">
+                            <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+                            <Nav.Link as={Link} to="/historia">Historia</Nav.Link>
+                            <Nav.Link as={Link} to="/calendario">Calendario</Nav.Link>
+                            <Nav.Link as={Link} to="/torneos">Torneos pasados</Nav.Link>
+                            <Nav.Link as={Link} to="/galeria">Galería de fotos</Nav.Link>
+                            <Nav.Link as={Link} to="/formacion">Formación</Nav.Link>
+                            <Nav.Link as={Link} to="/jugadores">Jugadores</Nav.Link>
+                            <Nav.Link as={Link} to="/basededatos">Base de datos</Nav.Link>
+                           
+                        </Nav>
+                    </Navbar.Collapse>
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                        
                        
@@ -48,11 +65,11 @@ export function Header() {
                     </div>
                 }
                   </div>
-                      
+               
 
 
-
-                        <div className="links-header">
+                      {/**
+                       *   <div className="links-header">
                             <Nav.Link href="https://web.facebook.com/share/g/18Ea7a8fMF/" className="icon-social">
                                 <IconFacebook width={24} height={24}/>
                             </Nav.Link>
@@ -60,10 +77,13 @@ export function Header() {
                                 <IconInstagram width={24} height={24} />
                             </Nav.Link>
                         </div>
+                       */}
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Navbar expand="lg" className="second-navbar">
+           {
+            /**
+             *  <Navbar expand="lg" className="second-navbar">
                 <Container>
                     <Navbar.Toggle aria-controls="second-navbar-nav" />
                     <Navbar.Collapse id="second-navbar-nav" className="second-navbar-collapse">
@@ -81,6 +101,10 @@ export function Header() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+             */
+           }
+                  
+                 
         </header>
     )
 }

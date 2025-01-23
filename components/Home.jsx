@@ -10,6 +10,7 @@ import { InfoModal } from "./InfoModal"
 import { ElementsArray } from "../elements"
 import { useNavigate } from "react-router-dom"
 import { useTheme } from "../context/ThemeContext"
+import { HeroSection } from "./HeroSection"
 
 export default function Home() {
   
@@ -26,10 +27,13 @@ export default function Home() {
   const goToNewsDetail = (id) => {
     navigate(`/noticias/${id}`, { state: { currentNews } }); 
   }
+
+ 
   
  
   return (
     <div className="container-home">
+     
       <Container fluid className="py-4" id="container-home">
         <Row className="g-4">
        
