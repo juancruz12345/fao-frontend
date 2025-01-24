@@ -26,6 +26,11 @@
 .brand-link-secondary span{
     margin-left: 5px;
     color: #333 !important;
+    font-size: 1rem;
+    white-space: normal; /* Permite que el texto se envuelva */
+    overflow: visible; /* Permite que el texto sea visible completamente */
+    text-overflow: clip; /* Elimina los puntos suspensivos */
+    max-width: none;
 }
 
 .links-social-secondary{

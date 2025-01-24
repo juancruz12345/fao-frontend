@@ -1,1 +1,0 @@
-import{P as a,r as i,y as u,j as n,z as f}from"./index-BeydOqpV.js";a.string,a.bool,a.bool,a.bool,a.bool;const p=i.forwardRef(({bsPrefix:s,className:e,fluid:o=!1,rounded:r=!1,roundedCircle:l=!1,thumbnail:t=!1,...d},m)=>(s=u(s,"img"),n.jsx("img",{ref:m,...d,className:f(e,o&&`${s}-fluid`,r&&"rounded",l&&"rounded-circle",t&&`${s}-thumbnail`)})));p.displayName="Image";export{p as I};

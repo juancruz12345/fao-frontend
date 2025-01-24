@@ -39,7 +39,7 @@ export function NavSecondary(){
         
           
       
-        <Navbar.Collapse id="second-navbar-nav">
+        <Navbar.Collapse id="second-navbar-nav" >
             <Nav className="mx-auto">
               <Nav.Link as={Link} className="secondary-nav-link" to="/">Inicio</Nav.Link>
               <Nav.Link as={Link} className="secondary-nav-link" to="/historia">Historia</Nav.Link>
@@ -51,9 +51,8 @@ export function NavSecondary(){
               <Nav.Link as={Link} className="secondary-nav-link" to="/basededatos">Base de datos</Nav.Link>
            
             </Nav>
-          </Navbar.Collapse>
-          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-                        <div className="theme-div" onClick={toggleTheme}>
+
+            <div className="theme-div" onClick={toggleTheme}>
                           {theme === "dark" ? (
                             <IconSun className="icon-theme-secondary" />
                           ) : (
@@ -70,7 +69,8 @@ export function NavSecondary(){
                                             <IconInstagram width={24} height={24} />
                                         </Nav.Link>
                                     </div>
-                      </Navbar.Collapse>
+          </Navbar.Collapse>
+          
 
       
        

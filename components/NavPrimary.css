@@ -1,7 +1,8 @@
-header{
+header {
     margin-bottom: 100px;
-}
-header .navbar {
+  }
+ 
+  header .navbar {
     position: fixed;
     width: 100%;
     top: 0;
@@ -10,110 +11,148 @@ header .navbar {
     background: transparent;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     color: #f8f9fa !important; /* Asegúrate de que el texto sea blanco */
-}
-
-header .navbar.scrolled {
+  }
+  
+  header .navbar.scrolled {
     background: #fff; /* Color de fondo cuando haces scroll */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
     color: #333 !important;
-    .nav-link, .brand span{
-        color: #333 !important;
+    .nav-link,
+    .brand span {
+      color: #333 !important;
     }
-    .nav-link:hover{
-        filter: drop-shadow(0 0px 1px #c7c7c7) !important;
+    .nav-link:hover {
+      filter: drop-shadow(0 0px 1px #c7c7c7) !important;
     }
-    .icon-theme:hover{
-        cursor: pointer;
-        filter: drop-shadow(0 0px 1px #c7c7c7) !important;
+    .icon-theme:hover {
+      cursor: pointer;
+      filter: drop-shadow(0 0px 1px #c7c7c7) !important;
     }
     .icon-social:hover {
-        filter: drop-shadow(0 0px 1px #c7c7c7) !important;
+      filter: drop-shadow(0 0px 1px #c7c7c7) !important;
     }
-}
-
-header .navbar .nav-link {
+  }
+  
+  header .navbar .nav-link {
     color: #f8f9fa !important; /* Asegúrate de que los enlaces sean blancos */
     transition: color 0.3s ease; /* Suaviza el cambio de color */
-}
-
-header .navbar .nav-link:hover {
+  }
+  
+  header .navbar .nav-link:hover {
     filter: drop-shadow(0 0px 1px #c0c0c0) !important;
-}
-
-.brand-link{
+  }
+  
+  .brand-link {
     display: flex;
     align-items: center;
     text-decoration: none;
-    
-}
-
-.brand span {
-    color: #f8f9fa !important; /* Color blanco para el texto de la marca */
+  }
+  
+  .brand span {
+    color: #f8f9fa;
     margin-left: 5px;
-
-}
-
-.icon-theme:hover{
+    font-size: 1rem;
+    white-space: normal; /* Permite que el texto se envuelva */
+    overflow: visible; /* Permite que el texto sea visible completamente */
+    text-overflow: clip; /* Elimina los puntos suspensivos */
+    max-width: none; /* Elimina la limitación de ancho */
+  }
+  
+  .icon-theme:hover {
     cursor: pointer;
     filter: drop-shadow(0 4px 4px #f8f9fa) !important;
-}
-
-
-.links-social{
+  }
+  
+  .links-social {
     display: flex;
     margin-left: 20px;
-}
-
-
-
-@media (max-width: 991px) {
-    .brand span {
-        font-size: 1rem;
-    }
-
-    .second-navbar-collapse {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .second-navbar .nav-link {
-        padding: 0.5rem;
-    }
-
-   
-}
-
-
-
-
-[data-bs-theme=dark] {
+  }
   
-   
-    
+  @media (max-width: 991px) {
+    .brand span {
+      font-size: 1rem;
+    }
+  
+    .second-navbar-collapse {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .second-navbar .nav-link {
+      padding: 0.5rem;
+    }
+  
+    header .navbar {
+      background: transparent; /* Fondo transparente en dispositivos móviles */
+    }
+  
     header .navbar.scrolled {
-        background: #1a1d20 !important; 
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+      background: #fff; /* Fondo blanco cuando se hace scroll */
+    }
+  
+    [data-bs-theme="dark"] header .navbar {
+      background: transparent; /* Fondo transparente en modo oscuro en dispositivos móviles */
+    }
+  
+    [data-bs-theme="dark"] header .navbar.scrolled {
+      background: #1a1d20; /* Fondo oscuro en modo oscuro cuando se hace scroll */
+    }
+  
+    header .navbar .nav-link,
+    header .navbar .brand span {
+      color: #f8f9fa !important; /* Texto claro en dispositivos móviles */
+    }
+  
+    header .navbar.scrolled .nav-link,
+    header .navbar.scrolled .brand span {
+      color: #333 !important; /* Texto oscuro cuando se hace scroll */
+    }
+  
+    [data-bs-theme="dark"] header .navbar.scrolled .nav-link,
+    [data-bs-theme="dark"] header .navbar.scrolled .brand span {
+      color: #f8f9fa !important; /* Texto claro en modo oscuro cuando se hace scroll */
+    }
+  
+    .navbar-collapse {
+      max-height: calc(100vh - 100px); /* Altura máxima del menú desplegable */
+      overflow-y: auto; /* Permite desplazamiento si el contenido es demasiado largo */
+    }
+  
+    .links-social {
+      margin-top: 10px;
+      justify-content: center;
+    }
+  
+    .theme-div {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+  
+  [data-bs-theme="dark"] {
+    header .navbar.scrolled {
+      background: #1a1d20 !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+      color: #f8f9fa !important;
+      .nav-link,
+      .brand span {
         color: #f8f9fa !important;
-        .nav-link, .brand span{
-            color: #f8f9fa !important;
-        }
-        .nav-link:hover{
-            filter: drop-shadow(0 0px 1px #dadada) !important;
-        }
-      
+      }
+      .nav-link:hover {
+        filter: drop-shadow(0 0px 1px #dadada) !important;
+      }
     }
-    
+  
     header .navbar .nav-link:hover {
-        filter: drop-shadow(0 0px 1px #dadada) !important;
+      filter: drop-shadow(0 0px 1px #dadada) !important;
     }
-    
-    .icon-theme:hover{
-        filter: drop-shadow(0 0px 1px #dadada) !important;
+  
+    .icon-theme:hover {
+      filter: drop-shadow(0 0px 1px #dadada) !important;
     }
-    .icon-social:hover{
-        filter: drop-shadow(0 0px 1px #dadada) !important;
+    .icon-social:hover {
+      filter: drop-shadow(0 0px 1px #dadada) !important;
     }
-    
-    
-}
-
+  }
+  
+  
