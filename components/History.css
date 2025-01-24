@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 20px;
     animation:fade-in 0.5s ease;
+    padding-top: 5rem;
   }
   @keyframes fade-in {
     from {

@@ -1,23 +1,32 @@
-.hero-section {
-    height: 100vh;
-    width: 100%;
-   
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%),
-      url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/depo%20ajedrez.jpg-UzUTE9HujM0uS6H2pTpEta8fdPqzb9.jpeg");
+.hero-banner {
+    position: relative;
+    height: 120vh;
+    background-image: url("https://sjc.microlink.io/keewWt2BafIzEoadJT5TGxCTtgZyqmI7lR3oE6o_RxeOep-jPd8P6azfW6Xbpx1fg_SElNlzl7xOzLcu52my2g.jpeg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
+    margin-top: -110px;
+    background-image: url("./depo ajedrez.jpg");
+    color: white !important;
+   
     
   }
   
-  .hero-content {
-    max-width: 800px;
-    padding: 2rem;
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+  }
+  .hero-content{
+    position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
   }
   
   .hero-content h1 {
@@ -28,6 +37,7 @@
   }
   
   .hero-content p {
+    
     font-size: 1.5rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   }

@@ -20,11 +20,13 @@ const DataBase = lazy(() => import('../components/DataBase'))
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Suspense fallback={<Loading></Loading>}>
+    <div className='layout'>
+      <div className='header'><Header /></div>
+     <div className='main'>
+     <Suspense fallback={<Loading></Loading>}>
        <TransitionWrapper>
-       <Routes>
+   
+      <Routes>
        
        <Route path="/" element={<Home />} />
        <Route path="/historia" element={<History />} />
@@ -38,9 +40,11 @@ function App() {
        <Route path="/jugador/:id" element={<PlayerHistory />} />
        <Route path="/basededatos" element={<DataBase />} />
      </Routes>
+    
        </TransitionWrapper>
       </Suspense>
-      <Footer />
+     </div>
+      <div className='footer'><Footer /></div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 #news-detail-container{
     animation: fade-in 0.5s ease;
+    padding-top: 2rem;
 }
 
 @keyframes fade-in {

@@ -15,32 +15,38 @@ body::view-transition {
     font-family: 'Lato', sans-serif;
   
   }
-  
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
+
+.main {
+  flex: 1; /* Esto asegura que el main ocupe el espacio restante */
+
+  padding: 1rem;
+}
+
+.footer {
+ 
+  padding: 1rem;
+  text-align: center;
+ 
+}
+  
+.icon-loading{
+  
+}
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
   }
-  .loading{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    background: white !important;
-    
-  }
-  footer{
-    margin-top: 40px;
-    p{
-      padding-top: 200px;
-      padding-bottom: 20px;
-      text-align: center;
-      
-    }
-  }
+  
 
   [data-bs-theme=dark]{
 

@@ -452,11 +452,62 @@ export function IconDownload(props){
   )
 }
 
-////<path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
 
 export function IconLink(){
   return(
     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
     
   )
+}
+///<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chess-bishop"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 16l-1.447 .724a1 1 0 0 0 -.553 .894v2.382h12v-2.382a1 1 0 0 0 -.553 -.894l-1.447 -.724h-8z" /><path d="M12 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M9.5 16c-1.667 0 -2.5 -1.669 -2.5 -3c0 -3.667 1.667 -6 5 -7c3.333 1 5 3.427 5 7c0 1.284 -.775 2.881 -2.325 3l-.175 0h-5z" /><path d="M15 8l-3 3" /><path d="M12 5v1" /></svg>
+
+
+export function IconBishop(props){
+  return(
+    <svg  xmlns="http://www.w3.org/2000/svg"  
+    width={props.width || "24"}
+    height={props.height || "24"}
+    
+    fill={props.fill || "none"}
+    stroke={props.stroke || "currentColor"}
+    strokeWidth={props.strokeWidth || "2"}
+    strokeLinecap={props.strokeLinecap || "round"}
+    strokeLinejoin={props.strokeLinejoin || "round"}
+    className="icon"
+    
+    ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 16l-1.447 .724a1 1 0 0 0 -.553 .894v2.382h12v-2.382a1 1 0 0 0 -.553 -.894l-1.447 -.724h-8z" /><path d="M12 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M9.5 16c-1.667 0 -2.5 -1.669 -2.5 -3c0 -3.667 1.667 -6 5 -7c3.333 1 5 3.427 5 7c0 1.284 -.775 2.881 -2.325 3l-.175 0h-5z" /><path d="M15 8l-3 3" /><path d="M12 5v1" /></svg>
+    
+  )
+}
+
+export function IconKing(){
+  return(
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chess-king"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 16l-1.447 .724a1 1 0 0 0 -.553 .894v2.382h12v-2.382a1 1 0 0 0 -.553 -.894l-1.447 -.724h-8z" /><path d="M8.5 16a3.5 3.5 0 1 1 3.163 -5h.674a3.5 3.5 0 1 1 3.163 5z" /><path d="M9 6h6" /><path d="M12 3v8" /></svg>
+    
+  )
+  
+}
+
+export function IconQueen(){
+  return(
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chess-queen"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 16l2 -11l-4 4l-2 -5l-2 5l-4 -4l2 11" /><path d="M8 16l-1.447 .724a1 1 0 0 0 -.553 .894v2.382h12v-2.382a1 1 0 0 0 -.553 -.894l-1.447 -.724h-8z" /><path d="M12 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M6 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M18 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
+    
+  )
+  
+}
+
+export function IconRook(){
+  return(
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chess-rook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 16l-1.447 .724a1 1 0 0 0 -.553 .894v2.382h12v-2.382a1 1 0 0 0 -.553 -.894l-1.447 -.724h-8z" /><path d="M8 16l1 -9h6l1 9" /><path d="M6 4l.5 3h11l.5 -3" /><path d="M10 4v3" /><path d="M14 4v3" /></svg>
+    
+  )
+  
+}
+export function IconPawn(){
+  return(
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chess"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3a3 3 0 0 1 3 3c0 1.113 -.6 2.482 -1.5 3l1.5 7h-6l1.5 -7c-.9 -.518 -1.5 -1.887 -1.5 -3a3 3 0 0 1 3 -3z" /><path d="M8 9h8" /><path d="M6.684 16.772a1 1 0 0 0 -.684 .949v1.279a1 1 0 0 0 1 1h10a1 1 0 0 0 1 -1v-1.28a1 1 0 0 0 -.684 -.948l-2.316 -.772h-6l-2.316 .772z" /></svg>
+    
+  )
+  
 }

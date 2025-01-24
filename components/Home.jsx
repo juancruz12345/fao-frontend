@@ -62,8 +62,9 @@ export default function Home() {
           <Col lg={6}>
            
             <h2 className="mb-4" id="news-h2">Últimas Noticias</h2>
-            {Array.isArray(currentNews) && currentNews.map((item) => (
-              <Card key={item.id} className="mb-4" id="card-news-home">
+           <div className="news-grid">
+           {Array.isArray(currentNews) && currentNews.map((item) => (
+              <Card key={item.id} className="news-card" id="card-news-home">
                  <Card.Img className="card-news-img" onClick={()=>{goToNewsDetail(item.id)}}  loading="lazy" variant="top" src={item.image_url} alt={item.title} />
              
                 <Card.Body>
@@ -76,6 +77,7 @@ export default function Home() {
                 </Card.Body>
               </Card>
             ))}
+           </div>
            
 
       <div className="btn-news-div">

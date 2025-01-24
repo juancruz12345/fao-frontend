@@ -1,0 +1,119 @@
+header{
+    margin-bottom: 100px;
+}
+header .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5 !important;
+    background: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    color: #f8f9fa !important; /* Asegúrate de que el texto sea blanco */
+}
+
+header .navbar.scrolled {
+    background: #fff; /* Color de fondo cuando haces scroll */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+    color: #333 !important;
+    .nav-link, .brand span{
+        color: #333 !important;
+    }
+    .nav-link:hover{
+        filter: drop-shadow(0 0px 1px #c7c7c7) !important;
+    }
+    .icon-theme:hover{
+        cursor: pointer;
+        filter: drop-shadow(0 0px 1px #c7c7c7) !important;
+    }
+    .icon-social:hover {
+        filter: drop-shadow(0 0px 1px #c7c7c7) !important;
+    }
+}
+
+header .navbar .nav-link {
+    color: #f8f9fa !important; /* Asegúrate de que los enlaces sean blancos */
+    transition: color 0.3s ease; /* Suaviza el cambio de color */
+}
+
+header .navbar .nav-link:hover {
+    filter: drop-shadow(0 0px 1px #c0c0c0) !important;
+}
+
+.brand-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    
+}
+
+.brand span {
+    color: #f8f9fa !important; /* Color blanco para el texto de la marca */
+    margin-left: 5px;
+
+}
+
+.icon-theme:hover{
+    cursor: pointer;
+    filter: drop-shadow(0 4px 4px #f8f9fa) !important;
+}
+
+
+.links-social{
+    display: flex;
+    margin-left: 20px;
+}
+
+
+
+@media (max-width: 991px) {
+    .brand span {
+        font-size: 1rem;
+    }
+
+    .second-navbar-collapse {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .second-navbar .nav-link {
+        padding: 0.5rem;
+    }
+
+   
+}
+
+
+
+
+[data-bs-theme=dark] {
+  
+   
+    
+    header .navbar.scrolled {
+        background: #1a1d20 !important; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+        color: #f8f9fa !important;
+        .nav-link, .brand span{
+            color: #f8f9fa !important;
+        }
+        .nav-link:hover{
+            filter: drop-shadow(0 0px 1px #dadada) !important;
+        }
+      
+    }
+    
+    header .navbar .nav-link:hover {
+        filter: drop-shadow(0 0px 1px #dadada) !important;
+    }
+    
+    .icon-theme:hover{
+        filter: drop-shadow(0 0px 1px #dadada) !important;
+    }
+    .icon-social:hover{
+        filter: drop-shadow(0 0px 1px #dadada) !important;
+    }
+    
+    
+}
+
