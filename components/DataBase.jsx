@@ -191,7 +191,7 @@ export default function DataBase(){
             </Row>
         </Container>
   
-     <ToastComponent show={show} setShow={setShow} msg={'No se encuentro ninguna partida.'}></ToastComponent>
+     <ToastComponent show={show} setShow={setShow} msg={'No se encontró ninguna partida.'}></ToastComponent>
   </div>
     )
 }
