@@ -1,1 +1,0 @@
-import{r,L as a}from"./index-CUkJcPzz.js";function u(){const{events:e}=r.useContext(a),o=(()=>{const n=new Date;return e.filter(t=>t.date>=n).sort((t,s)=>t.date-s.date).slice(0,3)})();return console.log(e),{events:e,upcomingEvents:o,formatDate:n=>{const t={year:"numeric",month:"long",day:"numeric"};return new Date(n).toLocaleDateString("es-ES",t)}}}export{u};
