@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Container, Alert } from "react-bootstrap";
-import { Loading } from "../components/Loading";
+import { LoadingHome } from "../components/LoadingHome";
 export const PlayerContext = createContext()
 
 function useFetchPlayers() {
@@ -31,7 +31,7 @@ export function PlayerProvider({children}){
      
         if (isLoading) {
          return (
-          <Loading msg={'Cargando jugadores'} />
+          <LoadingHome msg={'Cargando jugadores'} />
          );
        }
      

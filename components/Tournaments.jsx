@@ -9,6 +9,7 @@ import {Tournament} from '../components/Tournament.jsx'
 import { Loading } from "./Loading.jsx";
 
 
+
 export function TournamentsContent() {
 
   const { tournaments } = useTournament();

@@ -1,0 +1,65 @@
+.chess-container {
+    padding: 20px;
+  }
+  
+  .chess-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .chess-loading {
+    text-align: center;
+  }
+  
+  .chessboard-container {
+    margin-bottom: 20px;
+  }
+ 
+  
+  .chessboard-wrapper {
+    display: flex;
+    align-items: stretch;
+    align-self: center;
+    padding: 20px;
+  }
+ 
+  
+  .chess-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .moves-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .move-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  
+  .evaluation-bar {
+    width: 20px;
+    height: 400px;
+    background-color: #f0f0f0;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .evaluation-bar-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transition: height 0.3s ease-in-out;
+  }
+  
+ 
+  

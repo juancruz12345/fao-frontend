@@ -7,17 +7,38 @@ import { IconX, IconSearch, IconDownload, IconLink } from "./Icons"
 import { useState } from "react"
 import { ToastComponent } from "./ToastComponent"
 
+import { ModalBoard } from "./ModalBoard"
+
+
+
+
+
 export default function DataBase(){
+ 
+
+  const pgnPrueba = `https://f005.backblazeb2.com/file/FAO-pgn/matches/lichess_broadcast_3ra-categoria-ronda-1_stanek-andres-heht-matias-0-1_2023.05.13.pgn`
+
+  const examplePGN = `[Event "Lichess"]
+[Site "https://lichess.org"]
+[Date "2023.12.25"]
+[White "Jugador1"]
+[Black "Jugador2"]
+[Result "1-0"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 1-0`;
+
 
   const {players} = usePlayers()
   const playerMap = new Map(players.map(player => [player.id, player.name]))
   const getPlayerName = (playerId) => playerMap.get(playerId) || "Unknown Player"
   const getPlayer = (playerId) => players.find((player) => player.id === playerId) || { rating: 'N/A' }
-   const [searchName, setSearchName] = useState('')
-    const [searchTournament, setSearchTournament] = useState('')
-    const [searchDate, setSearchDate] = useState('')
-    const [searchingMatch, setSearchingMatch] = useState([])
-    const [show, setShow] = useState(false)
+  const [searchName, setSearchName] = useState('')
+  const [searchTournament, setSearchTournament] = useState('')
+  const [searchDate, setSearchDate] = useState('')
+  const [searchingMatch, setSearchingMatch] = useState([])
+  const [show, setShow] = useState(false)
+  const [showBoard, setShowBoard] = useState(false)
+  const [pgn, setPgn] = useState()
   
   const handleSearch = () => {
     if (!allMatchesDataBase?.length>0) return
@@ -87,6 +108,8 @@ export default function DataBase(){
 
     return(
       <div>
+       
+      <ModalBoard pgn={pgn} showBoard={showBoard} setShowBoard={setShowBoard}/>
         <Container id="database-container">
         <h1 className="title">Base de datos</h1>
             <Row>
@@ -145,7 +168,7 @@ export default function DataBase(){
           </Card>
           </Row>
           
-            <Row>
+            <Row >
             <Table striped bordered hover responsive className="database-table">
         <thead>
           <tr>
@@ -157,7 +180,7 @@ export default function DataBase(){
             <th>Fecha</th>
             <th>Resultado</th>
             <th>Link</th>
-            <th>PGN</th>
+            <th>Ver partida</th>
           </tr>
         </thead>
         <tbody>
@@ -171,7 +194,9 @@ export default function DataBase(){
     <td>{new Date(match?.tournament_start_date).toLocaleDateString()}</td>
     <td>{match?.result}</td>
     <td>{match?.link && (<a href={match?.link}>Link <IconLink></IconLink></a>)}</td>
-    <td>{match?.pgn && (
+    {
+      /**
+       * <td>{match?.pgn && (
                             <a 
                               href={match?.pgn} 
                               download 
@@ -183,6 +208,9 @@ export default function DataBase(){
                             >
                              Descargar <IconDownload></IconDownload>
                             </a>)}</td>
+       */
+    }
+    <td onClick={()=>{setPgn(match?.pgn),setShowBoard(true)}}><img className="img-board" src="\Photo-Texture-Pattern--Streamline-Ultimate.png"></img></td>
   
   </tr>
   ))}

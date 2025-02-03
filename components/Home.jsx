@@ -22,7 +22,6 @@ import { ElementsArray } from "../elements"
 import { useNavigate } from "react-router-dom"
 import { useTheme } from "../context/ThemeContext"
 
-
 export default function Home() {
   const { theme } = useTheme()
   const { upcomingEvents, formatDate } = useEvents()
@@ -39,10 +38,10 @@ export default function Home() {
   return (
     <div className="container-home">
       <Container fluid className="py-4" id="container-home">
-        <Row className="g-4">
+        <Row className="g-4 d-flex">
           {/* Columna de navegación */}
-          <Col lg={3} id="col-nav">
-            <Card className="col-nav-card">
+          <Col lg={3} id="col-nav" className="d-flex flex-column">
+            <Card className="col-nav-card flex-grow-0">
               <Card.Body className="p-0">
                 <div className="border-bottom p-3">
                   <NavItem
@@ -124,7 +123,7 @@ export default function Home() {
           </Col>
 
           {/* Columna central */}
-          <Col lg={6}>
+          <Col lg={6} className="flex-grow-1">
             <h2 className="mb-4" id="news-h2">
               Últimas Noticias
             </h2>
@@ -200,8 +199,8 @@ export default function Home() {
           </Col>
 
           {/* Columna de torneos */}
-          <Col lg={3} id="col-events">
-            <Card className="col-card-events">
+          <Col lg={3} id="col-events" className="d-flex flex-column">
+            <Card className="col-card-events flex-grow-0">
               <Card.Body>
                 <Card.Title className="mb-4">Próximos Torneos</Card.Title>
                 {Array.isArray(upcomingEvents) && upcomingEvents.length > 0 ? (

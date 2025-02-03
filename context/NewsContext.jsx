@@ -1,7 +1,7 @@
 import { createContext, useState} from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Alert, Container, Spinner } from "react-bootstrap";
-import { Loading } from "../components/Loading";
+import { Alert, Container } from "react-bootstrap";
+import { LoadingHome } from "../components/LoadingHome";
 
 export const NewsContext = createContext()
 
@@ -36,7 +36,7 @@ export function NewsProvider({children}){
 
    if (isFetching) {
     return (
-      <Loading msg={'Cargando noticias'} />
+      <LoadingHome msg={'Cargando noticias'} />
     );
   }
 

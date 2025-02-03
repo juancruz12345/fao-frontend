@@ -13,6 +13,13 @@ header .navbar {
   color: #f8f9fa !important; /* Asegúrate de que el texto sea blanco */
 }
 
+.container-nav{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid white;
+  width: 100vw;
+}
+
 header .navbar.scrolled {
   background: #fff; /* Color de fondo cuando haces scroll */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
@@ -95,8 +102,8 @@ header .navbar .nav-link:hover {
 }
 
 @media (max-width: 991px) {
-  .brand span {
-    font-size: 1rem;
+  .brand {
+    display: none;
   }
 
   .second-navbar-collapse {
@@ -109,7 +116,15 @@ header .navbar .nav-link:hover {
   }
 
   header .navbar {
-    background: transparent; /* Fondo transparente en dispositivos móviles */
+    background: #fff !important;
+
+   
+  }
+  #nav{
+    border: 1px solid rgba(255, 255, 255, 0.151);
+    max-width: max-content;
+    border-radius: 8px;
+    padding: 10px;
   }
 
   header .navbar.scrolled {
@@ -117,7 +132,7 @@ header .navbar .nav-link:hover {
   }
 
   [data-bs-theme="dark"] header .navbar {
-    background: transparent; /* Fondo transparente en modo oscuro en dispositivos móviles */
+    background: #1a1d20 !important; /* Fondo transparente en modo oscuro en dispositivos móviles */
   }
 
   [data-bs-theme="dark"] header .navbar.scrolled {

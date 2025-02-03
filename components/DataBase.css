@@ -28,6 +28,18 @@ th,td{
   z-index: 1050;
 }
 
+.offcanvas{
+  width: 100vw;
+}
+.img-board{
+  cursor: pointer;
+  
+}
+[data-bs-theme=dark]{
+  .img-board{
+    background-color: white;
+  }
+}
 
 @keyframes fade-in {
     from {

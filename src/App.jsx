@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { Loading } from '../components/Loading';
+import { LoadingHome } from '../components/LoadingHome';
 import TransitionWrapper from '../components/TransitionWrapper';
 
 const Home = lazy(() => import('../components/Home'))
@@ -23,7 +23,7 @@ function App() {
     <div className='layout'>
       <div className='header'><Header /></div>
      <div className='main'>
-     <Suspense fallback={<Loading></Loading>}>
+     <Suspense fallback={<LoadingHome></LoadingHome>}>
        <TransitionWrapper>
    
       <Routes>

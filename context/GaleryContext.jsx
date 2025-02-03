@@ -3,6 +3,7 @@ import { Alert, Container, Spinner } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { Loading } from "../components/Loading";
 
+
 export const GaleryContext = createContext()
 
 
@@ -61,7 +62,7 @@ export function GaleryProvider({children}){
 
    if (isLoading) {
     return (
-      <Loading msg={'Cargando galería'} />
+      <Loading msg={'Cargando imágenes'}></Loading>
     );
   }
 

@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Container, Alert, Spinner } from 'react-bootstrap';
+import { Container, Alert } from 'react-bootstrap';
 import {parseISO} from 'date-fns'
-import { Loading } from '../components/Loading';
+import { LoadingHome } from '../components/LoadingHome';
 
 export const EventContext = createContext()
 
@@ -43,7 +43,7 @@ export function EventProvider({ children }) {
    
     if (isLoading) {
      return (
-      <Loading msg={'Cargando eventos'} />
+      <LoadingHome msg={'Cargando eventos'} />
      );
    }
  

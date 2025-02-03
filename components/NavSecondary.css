@@ -64,6 +64,9 @@
     .brand-link-secondary span {
       font-size: 1rem;
     }
+    #nav{
+      color: black !important;
+    }
   
     .navbar-collapse {
       max-height: calc(100vh - 100px);

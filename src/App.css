@@ -43,6 +43,21 @@ body::view-transition {
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
   }
+
+  .loading-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+  }
+  .loading-home{
+    position: absolute;
+    top: 40vh;
+    
+    left: 0;
+    right: 0;
+  }
   
 
   [data-bs-theme=dark]{
