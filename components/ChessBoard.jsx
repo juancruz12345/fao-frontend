@@ -6,7 +6,7 @@ import { IconChevronLeftPipe, IconChevronRightPipe, IconChevronLeft, IconChevron
 import "./ChessBoard.css"
 import { EvaluationBar } from "./EvaluationBar"
 
-export function ChessBoard({ pgnUrl, isDarkMode }) {
+export function ChessBoard({ pgnUrl }) {
   const [game, setGame] = useState(new Chess())
   const [fen, setFen] = useState("start")
   const [loading, setLoading] = useState(true)
@@ -18,6 +18,7 @@ export function ChessBoard({ pgnUrl, isDarkMode }) {
   const [error, setError] = useState(null)
   const [white, setWhite] = useState('')
   const [black, setBlack] = useState('')
+  const [opening, setOpening] = useState('')
 
   useEffect(() => {
     if (pgnUrl) {
@@ -74,16 +75,16 @@ export function ChessBoard({ pgnUrl, isDarkMode }) {
  
 
   const extractMoveAndEvaluation = (text) => {
-    const regex = /Move \S+ → \S+ (\(\S+\)): \[([^\]]+)\]/;
-    const match = text.match(regex);
+    const regex = /Move \S+ → \S+ (\(\S+\)): \[([^\]]+)\]/
+    const match = text.match(regex)
   
     if (match) {
-      const move = match[1]; // Captura solo "(Qb1)"
-      const evaluation = match[2]; // Captura "-5.51"
-      return { move, evaluation };
+      const move = match[1]
+      const evaluation = match[2]
+      return { move, evaluation }
     } else {
-      console.warn("Formato inesperado en la respuesta de la API:", text);
-      return { move: "N/A", evaluation: "N/A" };
+      console.warn("Formato inesperado en la respuesta de la API:", text)
+      return { move: "N/A", evaluation: "N/A" }
     }
   };
   
@@ -161,7 +162,11 @@ export function ChessBoard({ pgnUrl, isDarkMode }) {
     const matchBlack = strBlackPlayer.match(/"([^"]+)"/)
     const blackPlayer = matchBlack ? matchBlack[1] : null
     setBlack(blackPlayer)
-  
+    
+    const strOpening = lines[10]
+    const openingMatch = strOpening.match(/"([^"]+)"/)
+    const openingVar = openingMatch ? openingMatch[1] : null
+    setOpening(openingVar)
   
     if (metadataIndex > 0 && lines[metadataIndex - 1] !== "") {
       lines.splice(metadataIndex, 0, "")
@@ -238,11 +243,12 @@ export function ChessBoard({ pgnUrl, isDarkMode }) {
                   </div>
                 )}
                 <br></br>
-                {!autoEvaluate && (
+                <p><strong>Apertura:</strong> {opening}</p>
+                {/*!autoEvaluate && (
                   <Button variant="primary" onClick={evaluatePosition}>
                     Evaluar Posición
                   </Button>
-                )}
+                )*/}
               </Card.Body>
             </Card>
             <Card>
