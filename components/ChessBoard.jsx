@@ -13,12 +13,34 @@ export function ChessBoard({ pgnUrl }) {
   const [moves, setMoves] = useState([])
   const [moveIndex, setMoveIndex] = useState(0)
   const [evaluation, setEvaluation] = useState(null)
+  const [bestMove, setBestMove] = useState(null)
   const [continuationArray, setContinuationArray] = useState()
   const [autoEvaluate, setAutoEvaluate] = useState(false)
   const [error, setError] = useState(null)
   const [white, setWhite] = useState('')
   const [black, setBlack] = useState('')
   const [opening, setOpening] = useState('')
+  const [boardWidth, setBoardWidth] = useState(400)
+
+  useEffect(() => {
+
+    const updateBoardSize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 800) {
+        setBoardWidth(screenWidth * 0.5)
+      } else {
+        setBoardWidth(400)
+      }
+    };
+
+    updateBoardSize()
+
+    window.addEventListener("resize", updateBoardSize)
+
+    return () => window.removeEventListener("resize", updateBoardSize)
+  }, [])
+
+  
 
   useEffect(() => {
     if (pgnUrl) {
@@ -72,6 +94,23 @@ export function ChessBoard({ pgnUrl }) {
     setFen(newGame.fen())
     setMoveIndex(index)
   }
+
+  useEffect(() => {
+    
+    const handleKeyPress = (event) => {
+      if (event.key === "ArrowRight") {
+        nextMove()
+      } else if (event.key === "ArrowLeft") {
+        prevMove()
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyPress)
+    
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress)
+    }
+  }, [moveIndex]) 
  
 
   const extractMoveAndEvaluation = (text) => {
@@ -86,7 +125,7 @@ export function ChessBoard({ pgnUrl }) {
       console.warn("Formato inesperado en la respuesta de la API:", text)
       return { move: "N/A", evaluation: "N/A" }
     }
-  };
+  }
   
 
   async function postChessApi(data = {}) {
@@ -103,21 +142,30 @@ export function ChessBoard({ pgnUrl }) {
   const evaluatePosition = async () => {
     try {
       setError(null)
-      const data = await postChessApi({ fen: fen })
-
+      const currentFen = game.fen()
+      const data = await postChessApi({ fen: currentFen })
+  
       if (data && data.text) {
-        console.log("Respuesta de la API:", data)
-
+      
         const { move, evaluation } = extractMoveAndEvaluation(data.text)
-        console.log(data.continuationArr)
-
-        setContinuationArray(data.continuationArr)
-        console.log(continuationArray)
-
+        const resultado = move.replace(/[()]/g, '')
+  
+        let uciMove = null
+        try {
+          uciMove = sanToUci(resultado, currentFen)
+          data.continuationArr.unshift(uciMove)
+          console.log(data.continuationArr)
+        } catch (error) {
+          console.error("Error al convertir SAN a UCI:", error.message)
+        }
+  
+        const sanMoves = uciToSan(data.continuationArr, currentFen)
+  
+        setBestMove(resultado)
+        setContinuationArray(sanMoves)
+  
         if (move && evaluation) {
           setEvaluation({ move, evaluation })
-          console.log("Movimiento:", move)
-          console.log("Valoración:", evaluation)
         } else {
           throw new Error("No se pudo extraer el movimiento y la valoración del texto.")
         }
@@ -129,6 +177,7 @@ export function ChessBoard({ pgnUrl }) {
       setError("Error al evaluar la posición. Por favor, inténtelo de nuevo.")
     }
   }
+  
 
   const nextMove = () => {
     if (moveIndex < moves.length) {
@@ -149,6 +198,9 @@ export function ChessBoard({ pgnUrl }) {
   const goToEnd = () => {
     updateBoard(moves.length)
   }
+
+ 
+
 
   function sanitizePGN(pgn) {
     const lines = pgn.trim().split("\n")
@@ -177,6 +229,68 @@ export function ChessBoard({ pgnUrl }) {
     }
     return sanitizedPGN
   }
+  
+  const onDrop = (sourceSquare, targetSquare) => {
+    if (!sourceSquare || !targetSquare) return
+  
+    const piece = game.get(sourceSquare)
+    console.log(piece)
+    const move = game.move({
+      from: sourceSquare,
+      to: targetSquare,
+      promotion: piece?.type === "p" && (targetSquare[1] === "8" || targetSquare[1] === "1") ? "q" : undefined,
+    })
+  
+    console.log("Movimiento realizado:", move)
+  
+    if (move) {
+      setGame(new Chess(game.fen()))
+      setFen(game.fen())
+      evaluatePosition()
+    }
+  }
+  
+
+
+
+function sanToUci(sanMove, fen) {
+  const chess = new Chess(fen)
+
+  const move = chess.move(sanMove, { sloppy: true })
+  if (!move) {
+      throw new Error(`Movimiento inválido: ${sanMove}`)
+  }
+  return move.from + move.to
+}
+
+
+function uciToSan(uciMoves, fen) {
+  
+  const chess = new Chess(fen)
+  const sanMoves = []
+ 
+  for (const uciMove of uciMoves) {
+      try {
+        
+          const from = uciMove.slice(0, 2)
+          const to = uciMove.slice(2, 4)
+
+          const move = chess.move({ from, to, promotion: 'q' })
+          if (move) {
+              sanMoves.push(move.san)
+          } else {
+              console.error(`Movimiento inválido: ${uciMove}`)
+          }
+      } catch (error) {
+          console.error(`Error al procesar el movimiento ${uciMove}:`, error.message)
+      }
+  }
+
+  return sanMoves
+}
+
+
+  
 
   return (
     <Container className="chess-container">
@@ -189,14 +303,14 @@ export function ChessBoard({ pgnUrl }) {
         <Row>
           <Col lg={8}>
             <div className="chessboard-container">
-            <Card>
-            <div className="chessboard-wrapper">
+            <div className="div-chessboard">
             <EvaluationBar id='evalution-bar' evaluation={evaluation?.evaluation} />
-                <Chessboard arePiecesDraggable={false} position={fen} boardWidth={400} id="board" />
-                
-              </div>
-            </Card>
-              <div className="chess-controls mt-3">
+            <div className="chessboard-wrapper">
+           <div className="board">
+           <Chessboard arePiecesDraggable={true} onPieceDrop={onDrop} position={fen} boardWidth={boardWidth} id="board" />
+
+           </div>
+           <div className="chess-controls mt-3">
                 <Button variant="outline-primary" onClick={goToStart}>
                   <IconChevronLeftPipe />
                 </Button>
@@ -210,6 +324,11 @@ export function ChessBoard({ pgnUrl }) {
                   <IconChevronRightPipe />
                 </Button>
               </div>
+            </div>
+         
+             
+            </div>
+              
             </div>
           </Col>
           <Col lg={4}>
@@ -226,7 +345,7 @@ export function ChessBoard({ pgnUrl }) {
                 {evaluation && (
                   <div>
                    
-                    <p><strong>Movimiento:</strong> {evaluation.move}</p>
+                    <p><strong>Movimiento:</strong> {bestMove}</p>
                     <p><strong>Continuación:</strong></p>
                       {
                        continuationArray?.length>0 ? continuationArray?.map((e,i)=>
@@ -244,11 +363,7 @@ export function ChessBoard({ pgnUrl }) {
                 )}
                 <br></br>
                 <p><strong>Apertura:</strong> {opening}</p>
-                {/*!autoEvaluate && (
-                  <Button variant="primary" onClick={evaluatePosition}>
-                    Evaluar Posición
-                  </Button>
-                )*/}
+              
               </Card.Body>
             </Card>
             <Card>

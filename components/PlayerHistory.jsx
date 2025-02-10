@@ -95,7 +95,7 @@ export function PlayerHistoryContent() {
               setTotalVictories(prev=>prev+1)
             }
             else if((game?.player1_name===playerName && game?.player2_name==='LIBRE') || (game?.player2_name===playerName && game?.player1_name==='LIBRE')){
-              setTotalVictories(prev=>prev+1)
+              setTotalVictories(prev=>prev)
             }
             else if(game?.result === '1-0' && game?.player2_name===playerName){
               setTotalLoses(prev=>prev+1)

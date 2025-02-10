@@ -24,6 +24,19 @@
     align-self: center;
     padding: 20px;
   }
+  .div-chessboard{
+    display: flex;
+   
+  }
+  .chessboard-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+  }
  
   
   .chess-controls {
@@ -46,10 +59,11 @@
   
   .evaluation-bar {
     width: 20px;
-    height: 400px;
+    height: 380px;
     background-color: #f0f0f0;
     margin-left: 10px;
-    position: relative;
+    
+ 
     overflow: hidden;
   }
   
@@ -59,6 +73,12 @@
     left: 0;
     width: 100%;
     transition: height 0.3s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    .evaluation-bar{
+      height: 50%;
+    }
   }
   
  

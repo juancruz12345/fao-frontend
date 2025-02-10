@@ -6,8 +6,8 @@ export function EvaluationBar({ evaluation }) {
     const whitePercentage = ((clampedEval + 8) / 16) * 100; // Mapea -8 a 0%, 0 a 50% y 8 a 100%
 
     return (
-      <div style={{display:"flex",}}>
-        <span style={{fontSize:"1.5rem", alignSelf:"center"}}>{evaluation}</span>
+      <div style={{display:"flex",flexDirection: "column"}}>
+        <span style={{fontSize:"1.5rem"}}>{evaluation}</span>
          <div className="evaluation-bar" style={{
           
           width: "40px",

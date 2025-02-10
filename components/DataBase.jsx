@@ -3,29 +3,13 @@ import { useQuery } from "@tanstack/react-query"
 import './DataBase.css'
 import { usePlayers } from "../context/PlayerContext"
 import { Loading } from "./Loading"
-import { IconX, IconSearch, IconDownload, IconLink } from "./Icons"
+import { IconX, IconSearch, IconLink } from "./Icons"
 import { useState } from "react"
 import { ToastComponent } from "./ToastComponent"
-
 import { ModalBoard } from "./ModalBoard"
 
 
-
-
-
 export default function DataBase(){
- 
-
-  const pgnPrueba = `https://f005.backblazeb2.com/file/FAO-pgn/matches/lichess_broadcast_3ra-categoria-ronda-1_stanek-andres-heht-matias-0-1_2023.05.13.pgn`
-
-  const examplePGN = `[Event "Lichess"]
-[Site "https://lichess.org"]
-[Date "2023.12.25"]
-[White "Jugador1"]
-[Black "Jugador2"]
-[Result "1-0"]
-
-1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 1-0`;
 
 
   const {players} = usePlayers()
@@ -39,6 +23,8 @@ export default function DataBase(){
   const [show, setShow] = useState(false)
   const [showBoard, setShowBoard] = useState(false)
   const [pgn, setPgn] = useState()
+  
+
   
   const handleSearch = () => {
     if (!allMatchesDataBase?.length>0) return
