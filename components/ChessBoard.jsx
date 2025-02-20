@@ -6,10 +6,10 @@ import { IconChevronLeftPipe, IconChevronRightPipe, IconChevronLeft, IconChevron
 import "./ChessBoard.css"
 import { EvaluationBar } from "./EvaluationBar"
 
-export function ChessBoard({ pgnUrl }) {
+export function ChessBoard({ pgnUrl, setPgn }) {
   const [game, setGame] = useState(new Chess())
   const [fen, setFen] = useState("start")
-  const [loading, setLoading] = useState(true)
+ /// const [loading, setLoading] = useState(true)
   const [moves, setMoves] = useState([])
   const [moveIndex, setMoveIndex] = useState(0)
   const [evaluation, setEvaluation] = useState(null)
@@ -46,7 +46,8 @@ export function ChessBoard({ pgnUrl }) {
     if (pgnUrl) {
       fetchPGN(pgnUrl)
     }
-  }, [pgnUrl])
+    
+  }, [pgnUrl,setPgn])
 
   useEffect(() => {
     if (autoEvaluate) {
@@ -61,7 +62,7 @@ export function ChessBoard({ pgnUrl }) {
         throw new Error(`Error al cargar PGN: ${response.status}`)
       }
       const pgn = await response.text()
-      
+
       const sanitizedPGN = sanitizePGN(pgn)
       console.log("PGN cargado desde URL:", sanitizedPGN)
       const newGame = new Chess()
@@ -73,12 +74,12 @@ export function ChessBoard({ pgnUrl }) {
       setMoves(movesList)
       setMoveIndex(movesList.length)
       setFen(newGame.fen())
-      setLoading(false)
+      ///setLoading(false)
       setError(null)
     } catch (error) {
       console.error("Error al obtener PGN:", error)
       setError("Error al cargar la partida. Por favor, inténtelo de nuevo.")
-      setLoading(false)
+      ///setLoading(false)
     }
   }
 
@@ -143,35 +144,41 @@ export function ChessBoard({ pgnUrl }) {
     try {
       setError(null)
       const currentFen = game.fen()
-      const data = await postChessApi({ fen: currentFen })
-  
-      if (data && data.text) {
+      if(autoEvaluate){
+        const data = await postChessApi({ fen: currentFen })
+        if (data && data.text) {
       
-        const { move, evaluation } = extractMoveAndEvaluation(data.text)
-        const resultado = move.replace(/[()]/g, '')
-  
-        let uciMove = null
-        try {
-          uciMove = sanToUci(resultado, currentFen)
-          data.continuationArr.unshift(uciMove)
-          console.log(data.continuationArr)
-        } catch (error) {
-          console.error("Error al convertir SAN a UCI:", error.message)
-        }
-  
-        const sanMoves = uciToSan(data.continuationArr, currentFen)
-  
-        setBestMove(resultado)
-        setContinuationArray(sanMoves)
-  
-        if (move && evaluation) {
-          setEvaluation({ move, evaluation })
+          const { move, evaluation } = extractMoveAndEvaluation(data.text)
+          const resultado = move.replace(/[()]/g, '')
+    
+          let uciMove = null
+          try {
+            uciMove = sanToUci(resultado, currentFen)
+            data.continuationArr.unshift(uciMove)
+            console.log(data.continuationArr)
+          } catch (error) {
+            console.error("Error al convertir SAN a UCI:", error.message)
+          }
+    
+          const sanMoves = uciToSan(data.continuationArr, currentFen)
+    
+          setBestMove(resultado)
+          setContinuationArray(sanMoves)
+    
+          if (move && evaluation) {
+            setEvaluation({ move, evaluation })
+          } else {
+            throw new Error("No se pudo extraer el movimiento y la valoración del texto.")
+          }
         } else {
-          throw new Error("No se pudo extraer el movimiento y la valoración del texto.")
+          throw new Error("La API no devolvió datos válidos.")
         }
-      } else {
-        throw new Error("La API no devolvió datos válidos.")
       }
+      else{
+        return
+      }
+  
+      
     } catch (error) {
       console.error("Error al evaluar la posición:", error)
       setError("Error al evaluar la posición. Por favor, inténtelo de nuevo.")
@@ -294,12 +301,12 @@ function uciToSan(uciMoves, fen) {
 
   return (
     <Container className="chess-container">
-      <h2 className="chess-title">{white} - {black}</h2>
-      {loading ? (
-        <p className="chess-loading">Cargando partida...</p>
-      ) : error ? (
-        <p className="chess-error">{error}</p>
-      ) : (
+      {
+        (white || black )
+        ? <h2 className="chess-title">{white} - {black}</h2>
+        : <></>
+      }
+      
         <Row>
           <Col lg={8}>
             <div className="chessboard-container">
@@ -385,7 +392,7 @@ function uciToSan(uciMoves, fen) {
             </Card>
           </Col>
         </Row>
-      )}
+      
     </Container>
   )
 }

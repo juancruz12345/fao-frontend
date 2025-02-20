@@ -18,7 +18,7 @@ export default function NewsDetails(){
   const goToNewsDetail = (id) => {
     navigate(`/noticias/${id}`, { state: { currentNews } }); 
   }
-    console.log(currentNews)
+
    
     const newsSingle = currentNews.find(p => p.id === parseInt(id))
     const otherNews = currentNews.filter(p => p.id !== parseInt(id)).slice(0,5)

@@ -4,9 +4,9 @@ import './DataBase.css'
 import { usePlayers } from "../context/PlayerContext"
 import { Loading } from "./Loading"
 import { IconX, IconSearch, IconLink } from "./Icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ToastComponent } from "./ToastComponent"
-import { ModalBoard } from "./ModalBoard"
+import { ChessBoard } from "./ChessBoard"
 
 
 export default function DataBase(){
@@ -21,23 +21,20 @@ export default function DataBase(){
   const [searchDate, setSearchDate] = useState('')
   const [searchingMatch, setSearchingMatch] = useState([])
   const [show, setShow] = useState(false)
-  const [showBoard, setShowBoard] = useState(false)
   const [pgn, setPgn] = useState()
-  
 
+
+  useEffect(()=>{
+    
+  },[pgn,setPgn])
   
   const handleSearch = () => {
     if (!allMatchesDataBase?.length>0) return
     const filteredMatches = allMatchesDataBase.filter((e) =>
       (searchName === '' || 
        getPlayerName(e.player1_id).toLowerCase().includes(searchName.toLowerCase()) ||
-       getPlayerName(e.player2_id).toLowerCase().includes(searchName.toLowerCase()) ) &&
+       getPlayerName(e.player2_id).toLowerCase().includes(searchName.toLowerCase()) )
 
-      (searchTournament === '' || 
-       e.tournament_name.toLowerCase().includes(searchTournament.toLowerCase())) &&
-
-      (searchDate === '' || new Date(e?.tournament_start_date).toLocaleDateString().includes(searchDate) )
-        
         
     )
     if(filteredMatches.length>0){
@@ -93,11 +90,13 @@ export default function DataBase(){
       }
 
     return(
-      <div>
+      <div className="database-container">
        
-      <ModalBoard pgn={pgn} showBoard={showBoard} setShowBoard={setShowBoard}/>
+      {/**<ModalBoard pgn={pgn} showBoard={showBoard} setShowBoard={setShowBoard}/> */}
         <Container id="database-container">
-        <h1 className="title">Base de datos</h1>
+        <Row>
+          <ChessBoard pgnUrl={pgn} setPgn={setPgn}></ChessBoard>
+        </Row>
             <Row>
           <Card className="mb-4">
             <Card.Body>
@@ -166,12 +165,12 @@ export default function DataBase(){
             <th>Fecha</th>
             <th>Resultado</th>
             <th>Link</th>
-            <th>Ver partida</th>
+            
           </tr>
         </thead>
         <tbody>
   {(searchingMatch.length>0 ? searchingMatch : allMatchesDataBase).map((match) => (
-    <tr key={match?.id}>
+    <tr key={match?.id}  onClick={()=>{setPgn(match?.pgn),window.scroll(0,50)}}>
     <td>{getPlayerName(match?.player1_id)}</td>
     <td>{getPlayer(match?.player1_id)?.rating || 'N/A'}</td>
     <td>{getPlayerName(match?.player2_id)}</td>
@@ -196,7 +195,7 @@ export default function DataBase(){
                             </a>)}</td>
        */
     }
-    <td onClick={()=>{setPgn(match?.pgn),setShowBoard(true)}}><img className="img-board" src="\Photo-Texture-Pattern--Streamline-Ultimate.png"></img></td>
+    {/**<td><img className="img-board" src="\Photo-Texture-Pattern--Streamline-Ultimate.png"></img></td> */}
   
   </tr>
   ))}

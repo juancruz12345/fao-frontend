@@ -19,6 +19,7 @@ export function TournamentsContent() {
   const goToTournamentDetail = (id) => {
     navigate(`/torneo/${id}`, { state: { tournaments } })
   }
+  console.log(tournaments)
 
 useEffect
  

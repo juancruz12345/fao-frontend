@@ -11,8 +11,7 @@ export function GaleryContent() {
   const [show, setShow] = useState(false);
   const [img, setImg] = useState({})
   const { imgs, totalPages, currentPage, goToPage } = useGalery()
-  
-  
+ 
   const handlePageChange = (pageNumber) => {
     goToPage(pageNumber)
     window.scrollTo(0, 0)
