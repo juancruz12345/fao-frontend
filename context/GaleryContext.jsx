@@ -36,16 +36,16 @@ export function useGalery(page=1, limit=20){
     if(!imgs){
       throw new Error('no context')
     }
-    const [orderByDateImgs, setOrderByDate] = useState(imgs.sort((a, b) => new Date(b.created_at.slice(0,10)) - new Date(a.created_at.slice(0,10))))
+    ///const [orderByDateImgs, setOrderByDate] = useState(imgs.sort((a, b) => new Date(b.created_at.slice(0,10)) - new Date(a.created_at.slice(0,10))))
     const [currentPage, setCurrentPage] = useState(page);
 
     const { paginatedImgs, totalPages } = useMemo(() => {
         const startIndex = (currentPage - 1) * limit
         const endIndex = startIndex + limit
-        const paginatedImgs = orderByDateImgs.slice(startIndex, endIndex)
-        const totalPages = Math.ceil(orderByDateImgs.length / limit)
+        const paginatedImgs = imgs.slice(startIndex, endIndex)
+        const totalPages = Math.ceil(imgs.length / limit)
         return { paginatedImgs, totalPages }
-      }, [orderByDateImgs, currentPage, limit])
+      }, [imgs, currentPage, limit])
     
       const goToPage = (newPage) => {
         setCurrentPage(newPage)
@@ -59,7 +59,7 @@ export function GaleryProvider({children}){
    
     
    const { data: imgs = [], isLoading, error } = useFetchImgs()
-  
+   imgs.reverse()
 
    if (isLoading) {
     return (

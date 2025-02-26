@@ -10,6 +10,7 @@
       opacity: 1;
     }
   }
+
   
   .chess-title {
     font-size: 24px;
@@ -56,6 +57,8 @@
   .moves-list {
     max-height: 300px;
     overflow-y: auto;
+    display: grid;
+  grid-template-columns: auto auto;
   }
   
   .move-btn {

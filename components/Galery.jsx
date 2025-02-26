@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Pagination } from 'react-bootstrap';
 import './Galery.css'
 import { ModalComponent } from "./ModalComponent";
 import { GaleryProvider, useGalery } from "../context/GaleryContext";
-import { LoadingHome } from "./LoadingHome";
+
 
 export function GaleryContent() {
 
@@ -11,7 +11,8 @@ export function GaleryContent() {
   const [show, setShow] = useState(false);
   const [img, setImg] = useState({})
   const { imgs, totalPages, currentPage, goToPage } = useGalery()
- 
+  
+ console.log(imgs)
   const handlePageChange = (pageNumber) => {
     goToPage(pageNumber)
     window.scrollTo(0, 0)

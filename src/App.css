@@ -53,8 +53,8 @@ body::view-transition {
   }
   .loading-home{
     position: absolute;
-    top: 40vh;
-    
+    top: 30vh;
+    font-weight: bolder;
     left: 0;
     right: 0;
   }

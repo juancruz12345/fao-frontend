@@ -8,8 +8,8 @@ export function HeroSection() {
       <div className="hero-overlay">
         <Container className="hero-content">
           <div className="hero-text">
-            <h1>Bienvenidos a la Federación de Ajedrez Olavarría</h1>
-            <p>Descubre el fascinante mundo del ajedrez</p>
+            <h1>Bienvenido a la Federación de Ajedrez Olavarría</h1>
+          
           </div>
         </Container>
       </div>

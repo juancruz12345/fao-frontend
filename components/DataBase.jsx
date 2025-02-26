@@ -22,7 +22,9 @@ export default function DataBase(){
   const [searchingMatch, setSearchingMatch] = useState([])
   const [show, setShow] = useState(false)
   const [pgn, setPgn] = useState()
-
+  const [withe, setWithe] = useState('')
+  const [black, setBlack] = useState('')
+  const [result, setResult] = useState('')
 
   useEffect(()=>{
     
@@ -33,8 +35,10 @@ export default function DataBase(){
     const filteredMatches = allMatchesDataBase.filter((e) =>
       (searchName === '' || 
        getPlayerName(e.player1_id).toLowerCase().includes(searchName.toLowerCase()) ||
-       getPlayerName(e.player2_id).toLowerCase().includes(searchName.toLowerCase()) )
-
+       getPlayerName(e.player2_id).toLowerCase().includes(searchName.toLowerCase()) ) &&
+        
+      (searchTournament === '' || 
+        e.tournament_name.toLowerCase().includes(searchTournament.toLowerCase()))
         
     )
     if(filteredMatches.length>0){
@@ -72,8 +76,8 @@ export default function DataBase(){
           }
           return response.json()
         },
-        staleTime: 1000 * 60 * 20,
-        cacheTime: 1000 * 60 * 30,
+        staleTime: 1000 * 60 * 50,
+        cacheTime: 1000 * 60 * 60,
         refetchOnWindowFocus: false
       })
 
@@ -95,7 +99,7 @@ export default function DataBase(){
       {/**<ModalBoard pgn={pgn} showBoard={showBoard} setShowBoard={setShowBoard}/> */}
         <Container id="database-container">
         <Row>
-          <ChessBoard pgnUrl={pgn} setPgn={setPgn}></ChessBoard>
+          <ChessBoard pgnUrl={pgn} setPgn={setPgn} withe={withe} black={black} result={result}></ChessBoard>
         </Row>
             <Row>
           <Card className="mb-4">
@@ -124,15 +128,7 @@ export default function DataBase(){
                   </Form.Group>
                 </Col>
                 <Col xs={12} sm={6} md={4}>
-                  <Form.Group>
-                    <Form.Label>Buscar por fecha</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Fecha del torneo"
-                      value={searchDate}
-                      onChange={(e) => setSearchDate(e.target.value)}
-                    />
-                  </Form.Group>
+                 
                 </Col>
             
                   <Col xs={12} md={4} className="d-flex align-items-end">
@@ -154,7 +150,7 @@ export default function DataBase(){
           </Row>
           
             <Row >
-            <Table striped bordered hover responsive className="database-table">
+            <Table striped bordered hover className="database-table">
         <thead>
           <tr>
             <th>Jugador de blancas</th>
@@ -170,7 +166,7 @@ export default function DataBase(){
         </thead>
         <tbody>
   {(searchingMatch.length>0 ? searchingMatch : allMatchesDataBase).map((match) => (
-    <tr key={match?.id}  onClick={()=>{setPgn(match?.pgn),window.scroll(0,50)}}>
+    <tr key={match?.id}  onClick={()=>{setPgn(match?.pgn),window.scroll(0,50), setWithe(getPlayer(match?.player1_id)), setBlack(getPlayer(match?.player2_id)), setResult(match?.result)}}>
     <td>{getPlayerName(match?.player1_id)}</td>
     <td>{getPlayer(match?.player1_id)?.rating || 'N/A'}</td>
     <td>{getPlayerName(match?.player2_id)}</td>

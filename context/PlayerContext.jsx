@@ -16,8 +16,8 @@ function useFetchPlayers() {
       return response.json();
     },
     
-    staleTime: 1000 * 60 * 20, // Los datos son válidos durante 5 minutos
-    cacheTime: 1000 * 60 * 30, // Mantén los datos en caché durante 10 minutos
+    staleTime: 1000 * 60 * 50, // Los datos son válidos durante 5 minutos
+    cacheTime: 1000 * 60 * 60, // Mantén los datos en caché durante 10 minutos
     refetchOnWindowFocus: false
   });
 }

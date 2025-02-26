@@ -36,8 +36,8 @@ export function PlayerHistoryContent() {
       }
       return response.json()
     },
-    staleTime: 1000 * 60 * 20,
-    cacheTime: 1000 * 60 * 30,
+    staleTime: 1000 * 60 * 50,
+    cacheTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false
   })
 

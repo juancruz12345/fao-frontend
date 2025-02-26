@@ -6,7 +6,7 @@ import { IconChevronLeftPipe, IconChevronRightPipe, IconChevronLeft, IconChevron
 import "./ChessBoard.css"
 import { EvaluationBar } from "./EvaluationBar"
 
-export function ChessBoard({ pgnUrl, setPgn }) {
+export function ChessBoard({ pgnUrl, setPgn, withe, black, result }) {
   const [game, setGame] = useState(new Chess())
   const [fen, setFen] = useState("start")
  /// const [loading, setLoading] = useState(true)
@@ -17,9 +17,7 @@ export function ChessBoard({ pgnUrl, setPgn }) {
   const [continuationArray, setContinuationArray] = useState()
   const [autoEvaluate, setAutoEvaluate] = useState(false)
   const [error, setError] = useState(null)
-  const [white, setWhite] = useState('')
-  const [black, setBlack] = useState('')
-  const [opening, setOpening] = useState('')
+
   const [boardWidth, setBoardWidth] = useState(400)
 
   useEffect(() => {
@@ -45,6 +43,7 @@ export function ChessBoard({ pgnUrl, setPgn }) {
   useEffect(() => {
     if (pgnUrl) {
       fetchPGN(pgnUrl)
+    
     }
     
   }, [pgnUrl,setPgn])
@@ -72,21 +71,23 @@ export function ChessBoard({ pgnUrl, setPgn }) {
 
       setGame(newGame)
       setMoves(movesList)
-      setMoveIndex(movesList.length)
-      setFen(newGame.fen())
-      ///setLoading(false)
+      
+      //setFen(newGame.fen())
+      setFen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR')
+      setMoveIndex(0)
+      
       setError(null)
     } catch (error) {
       console.error("Error al obtener PGN:", error)
       setError("Error al cargar la partida. Por favor, inténtelo de nuevo.")
-      ///setLoading(false)
+      
     }
   }
 
   const updateBoard = (index) => {
     const newGame = new Chess()
     const movesCopy = [...moves]
-
+   
     for (let i = 0; i < index; i++) {
       newGame.move(movesCopy[i])
     }
@@ -100,8 +101,10 @@ export function ChessBoard({ pgnUrl, setPgn }) {
     
     const handleKeyPress = (event) => {
       if (event.key === "ArrowRight") {
+
         nextMove()
       } else if (event.key === "ArrowLeft") {
+       
         prevMove()
       }
     }
@@ -213,19 +216,7 @@ export function ChessBoard({ pgnUrl, setPgn }) {
     const lines = pgn.trim().split("\n")
     const metadataIndex = lines.findIndex((line) => line.startsWith("1."))
     
-    const strWhitePlayer = lines[4]
-    const matchWhite = strWhitePlayer.match(/"([^"]+)"/)
-    const whitePlayer = matchWhite ? matchWhite[1] : null
-    setWhite(whitePlayer)
-    const strBlackPlayer = lines[5]
-    const matchBlack = strBlackPlayer.match(/"([^"]+)"/)
-    const blackPlayer = matchBlack ? matchBlack[1] : null
-    setBlack(blackPlayer)
-    
-    const strOpening = lines[10]
-    const openingMatch = strOpening.match(/"([^"]+)"/)
-    const openingVar = openingMatch ? openingMatch[1] : null
-    setOpening(openingVar)
+
   
     if (metadataIndex > 0 && lines[metadataIndex - 1] !== "") {
       lines.splice(metadataIndex, 0, "")
@@ -302,8 +293,8 @@ function uciToSan(uciMoves, fen) {
   return (
     <Container className="chess-container">
       {
-        (white || black )
-        ? <h2 className="chess-title">{white} - {black}</h2>
+        (withe?.name || black?.name )
+        ? <h2 className="chess-title">{withe?.name} - {black?.name}</h2>
         : <></>
       }
       
@@ -368,8 +359,7 @@ function uciToSan(uciMoves, fen) {
                   
                   </div>
                 )}
-                <br></br>
-                <p><strong>Apertura:</strong> {opening}</p>
+              
               
               </Card.Body>
             </Card>
@@ -380,11 +370,11 @@ function uciToSan(uciMoves, fen) {
                   {moves.map((move, index) => (
                     <Button
                       key={index}
-                      variant={index === moveIndex - 1 ? "primary" : "outline-primary"}
+                      variant={index === moveIndex - 1 ? "secondary" : "outline-secondary"}
                       onClick={() => updateBoard(index + 1)}
                       className="move-btn"
                     >
-                      {`${Math.floor(index / 2) + 1}${index % 2 === 0 ? "." : "..."} ${move}`}
+                      {`${Math.floor(index / 2) + 1}${index % 2 === 0 ? "." : "."} ${move}`}
                     </Button>
                   ))}
                 </div>
